@@ -37,6 +37,12 @@ features:
       details: Turning cold messages into warm opportunities, until it’s your turn to get grilled on graphs, arrays, and algorithms you once bragged about mastering.
       link: ./LinkedIn
 
+    - icon: '<img src="https://logo.clearbit.com/optum.com" width="36" style="vertical-align:middle;">'
+      title: Optum
+      details: Where healthcare meets high code pressure, fixing bugs faster than symptoms and optimizing systems before patients.
+      link: ./Optum
+
+
 
 
     
