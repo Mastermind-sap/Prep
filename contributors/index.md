@@ -121,4 +121,19 @@
   ]'
 />
 
+<ElectricCard
+  badge="CONTRIBUTOR"
+  image="https://res.cloudinary.com/dzgoq3ikq/image/upload/v1761475215/krish_wanc0u.jpg"
+  title="Krish Jha"
+  role=" CSE @NITS"
+  description="Improving one line of code at a time"
+  :links='[
+    { "label": "GitHub", "url": "https://github.com/krishjha1121" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/krish-jha-5059202a9" },
+    { "label": "Leetcode", "url": "https://leetcode.com/u/krishjha1121" },
+    { "label": "Codeforces", "url": "https://codeforces.com/profile/krishjha1121"},
+    { "label": "monkeytype", "url": "https://monkeytype.com/profile/krisshhh" }
+  ]'
+/>
+
 </div>
