@@ -58,7 +58,7 @@ features:
       link: /SQL/
 
     - icon: 💻
-      title: Interview Prep 
+      title: Interview Prep
       details: First-hand interview experiences and role-specific questions shared by candidates from particular companies, with practical preparation tips.
       link: /Interview/
 ---
@@ -66,4 +66,4 @@ features:
 ## Contributing
 
 Found an error or want to add content? Contributions are welcome!  
-Visit the [GitHub repository](https://github.com/raj8664/Prep) to contribute.
+Visit the [GitHub repository](https://github.com/raj8664/Prep){.btn-link} to contribute.
