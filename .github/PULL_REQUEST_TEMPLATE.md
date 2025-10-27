@@ -1,7 +1,7 @@
 👋 Hey there! Thank you for contributing to Prep 🚀
 Please fill out this pull request template carefully to help us review your changes quickly.
 
-Please check all that apply: _Place an "x" in the corresponding checkbox if it is done or does not apply to this pull request._
+Please check all that apply: `Place an "x" in the corresponding checkbox if it is done or does not apply to this pull request`
 
 - [ ] 🐛 Bug fix (non-breaking change that fixes an issue)
 - [ ] 🚀 New feature (non-breaking change that adds functionality)
