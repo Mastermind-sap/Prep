@@ -37,6 +37,13 @@ mindmap
 
 Let's look at a classic example that violates SRP:
 
+<CodeTabs :languages="[
+  { name: 'C++', slot: 'cpp' },
+  { name: 'Java', slot: 'java' }
+]">
+
+<template #java>
+
 ```java
 // ❌ VIOLATION: This class has multiple responsibilities
 public class Employee {
@@ -95,6 +102,85 @@ public class Employee {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+// ❌ VIOLATION: This class has multiple responsibilities
+class Employee {
+private:
+    string name;
+    string employeeId;
+    double salary;
+    string department;
+
+public:
+    // Constructor
+    Employee(string name, string employeeId, double salary, string department) {
+        this->name = name;
+        this->employeeId = employeeId;
+        this->salary = salary;
+        this->department = department;
+    }
+
+    // Responsibility 1: Data management
+    void setName(string name) { this->name = name; }
+    string getName() const { return name; }
+
+    void setSalary(double salary) { this->salary = salary; }
+    double getSalary() const { return salary; }
+
+    // Responsibility 2: Salary calculations
+    double calculateTax() const {
+        return salary * 0.25;
+    }
+
+    double calculateBonus() const {
+        return salary * 0.1;
+    }
+
+    // Responsibility 3: Database operations
+    void saveToDatabase() const {
+        cout << "Saving employee to database..." << endl;
+    }
+
+    void deleteFromDatabase() const {
+        cout << "Deleting employee from database..." << endl;
+    }
+
+    // Responsibility 4: Report generation
+    void generatePayslip() const {
+        cout << "=== PAYSLIP ===" << endl;
+        cout << "Employee: " << name << endl;
+        cout << "Salary: $" << salary << endl;
+        cout << "Tax: $" << calculateTax() << endl;
+        cout << "Bonus: $" << calculateBonus() << endl;
+    }
+
+    // Responsibility 5: Email notifications
+    void sendEmail(const string& message) const {
+        cout << "Sending email to " << name << ": " << message << endl;
+    }
+};
+
+// Example usage
+int main() {
+    Employee emp("John Doe", "E123", 50000, "Engineering");
+    emp.generatePayslip();
+    emp.saveToDatabase();
+    emp.sendEmail("Your payslip has been generated.");
+    return 0;
+}
+```
+
+</template>
+</CodeTabs>
+
 ### Problems with This Design
 
 1. **Multiple Reasons to Change**:
@@ -113,6 +199,13 @@ public class Employee {
 Let's refactor this into multiple classes, each with a single responsibility:
 
 ### 1. Employee Data Class
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 // ✅ GOOD: Only handles employee data
@@ -144,7 +237,53 @@ public class Employee {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <string>
+using namespace std;
+
+// ✅ GOOD: Only handles employee data
+class Employee {
+private:
+    string name;
+    string employeeId;
+    double salary;
+    string department;
+
+public:
+    // Constructor
+    Employee(const string& name, const string& employeeId, double salary, const string& department)
+        : name(name), employeeId(employeeId), salary(salary), department(department) {}
+
+    // Getters and Setters — data management only
+    string getName() const { return name; }
+    void setName(const string& name) { this->name = name; }
+
+    string getEmployeeId() const { return employeeId; }
+    void setEmployeeId(const string& employeeId) { this->employeeId = employeeId; }
+
+    double getSalary() const { return salary; }
+    void setSalary(double salary) { this->salary = salary; }
+
+    string getDepartment() const { return department; }
+    void setDepartment(const string& department) { this->department = department; }
+};
+```
+
+</template>
+</CodeTabs>
+
 ### 2. Salary Calculator Class
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 // ✅ GOOD: Only handles salary calculations
@@ -166,7 +305,40 @@ public class SalaryCalculator {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Employee; // Forward declaration (since Employee will be defined elsewhere)
+
+class SalaryCalculator {
+private:
+    static constexpr double TAX_RATE = 0.25;
+    static constexpr double BONUS_RATE = 0.1;
+
+public:
+    double calculateTax(const Employee& employee) const;
+    double calculateBonus(const Employee& employee) const;
+    double calculateNetSalary(const Employee& employee) const;
+};
+```
+
+</template>
+
+</CodeTabs>
+
 ### 3. Employee Repository Class
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 // ✅ GOOD: Only handles database operations
@@ -195,7 +367,94 @@ public class EmployeeRepository {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Mock DatabaseConnection class (for illustration)
+class DatabaseConnection {
+public:
+    void connect() const {
+        cout << "Connecting to database..." << endl;
+    }
+
+    void disconnect() const {
+        cout << "Disconnecting from database..." << endl;
+    }
+};
+
+// Forward declaration of Employee class
+class Employee {
+private:
+    string name;
+    string employeeId;
+    double salary;
+    string department;
+
+public:
+    Employee(const string& name, const string& employeeId, double salary, const string& department)
+        : name(name), employeeId(employeeId), salary(salary), department(department) {}
+
+    string getName() const { return name; }
+    string getEmployeeId() const { return employeeId; }
+};
+
+// ✅ GOOD: Only handles database operations
+class EmployeeRepository {
+private:
+    DatabaseConnection connection;
+
+public:
+    EmployeeRepository(const DatabaseConnection& conn) : connection(conn) {}
+
+    void save(const Employee& employee) const {
+        // Database save logic
+        cout << "Saving employee " << employee.getName() << " to database..." << endl;
+    }
+
+    void deleteById(const string& employeeId) const {
+        // Database delete logic
+        cout << "Deleting employee " << employeeId << " from database..." << endl;
+    }
+
+    Employee* findById(const string& employeeId) const {
+        // Database query logic
+        cout << "Finding employee " << employeeId << " in database..." << endl;
+        return nullptr; // Simplified for example
+    }
+};
+
+// Example usage
+int main() {
+    DatabaseConnection db;
+    EmployeeRepository repo(db);
+
+    Employee emp("Alice", "E102", 60000, "Finance");
+
+    repo.save(emp);
+    repo.findById("E102");
+    repo.deleteById("E102");
+
+    return 0;
+}
+```
+
+</template>
+</CodeTabs>
+
 ### 4. Payslip Generator Class
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 // ✅ GOOD: Only handles report generation
@@ -227,7 +486,58 @@ public class PayslipGenerator {
 }
 ```
 
+</template>
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+// Forward declarations
+class Employee;
+class SalaryCalculator;
+
+class PayslipGenerator {
+private:
+    const SalaryCalculator& calculator;
+
+public:
+    PayslipGenerator(const SalaryCalculator& calc) : calculator(calc) {}
+
+    void generatePayslip(const Employee& employee) const {
+        cout << "=== PAYSLIP ===" << endl;
+        cout << "Employee: " << employee.getName() << endl;
+        cout << "ID: " << employee.getEmployeeId() << endl;
+        cout << "Department: " << employee.getDepartment() << endl;
+        cout << "Gross Salary: $" << employee.getSalary() << endl;
+        cout << "Tax: $" << calculator.calculateTax(employee) << endl;
+        cout << "Bonus: $" << calculator.calculateBonus(employee) << endl;
+        cout << "Net Salary: $" << calculator.calculateNetSalary(employee) << endl;
+        cout << "================" << endl;
+    }
+
+    string generatePayslipAsString(const Employee& employee) const {
+        stringstream ss;
+        ss << "Payslip for: " << employee.getName() << "\n";
+        ss << "Net Salary: $" << calculator.calculateNetSalary(employee);
+        return ss.str();
+    }
+};
+```
+
+</template>
+</CodeTabs>
+
 ### 5. Email Service Class
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 // ✅ GOOD: Only handles email operations
@@ -253,6 +563,44 @@ public class EmailService {
     }
 }
 ```
+
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Forward declaration
+class Employee;
+
+class EmailService {
+private:
+    string smtpServer;
+    int port;
+
+public:
+    EmailService(const string& smtpServer, int port)
+        : smtpServer(smtpServer), port(port) {}
+
+    void sendEmail(const string& recipientEmail, const string& subject, const string& message) const {
+        // Email sending logic
+        cout << "Sending email to: " << recipientEmail << endl;
+        cout << "Subject: " << subject << endl;
+        cout << "Message: " << message << endl;
+    }
+
+    void sendPayslipEmail(const Employee& employee, const string& payslipContent) const {
+        string subject = "Payslip for " + employee.getName();
+        sendEmail(employee.getName() + "@company.com", subject, payslipContent);
+    }
+};
+```
+
+</template>
+</CodeTabs>
 
 ## 🏗️ Class Diagram After SRP
 
@@ -307,6 +655,13 @@ classDiagram
 
 ## 🎯 Using the Refactored Classes
 
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
+
 ```java
 public class EmployeeManagementSystem {
     public static void main(String[] args) {
@@ -332,11 +687,68 @@ public class EmployeeManagementSystem {
 }
 ```
 
+</template>
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Forward declarations of all used classes
+class DatabaseConnection;
+class Employee;
+class SalaryCalculator;
+class EmployeeRepository;
+class PayslipGenerator;
+class EmailService;
+
+class EmployeeManagementSystem {
+public:
+    static void main() {
+        // Create dependencies
+        SalaryCalculator calculator;
+        EmployeeRepository repository(DatabaseConnection());
+        PayslipGenerator payslipGenerator(calculator);
+        EmailService emailService("smtp.company.com", 587);
+
+        // Create employee
+        Employee employee("John Doe", "EMP001", 50000, "Engineering");
+
+        // Save to database
+        repository.save(employee);
+
+        // Generate payslip
+        payslipGenerator.generatePayslip(employee);
+        string payslipContent = payslipGenerator.generatePayslipAsString(employee);
+
+        // Send payslip via email
+        emailService.sendPayslipEmail(employee, payslipContent);
+    }
+};
+
+// Entry point
+int main() {
+    EmployeeManagementSystem::main();
+    return 0;
+}
+```
+
+</template>
+</CodeTabs>
+
 ## 🎨 More SRP Examples
 
 ### Example 1: User Authentication
 
 #### ❌ Violation
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 public class UserManager {
@@ -348,7 +760,38 @@ public class UserManager {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class User {};
+
+class UserManager {
+public:
+    bool validateUser(const string& username, const string& password) { /* ... */ return true; }
+    void sendPasswordResetEmail(const string& email) { /* ... */ }
+    void logUserActivity(const string& username, const string& activity) { /* ... */ }
+    void saveUserToDatabase(const User& user) { /* ... */ }
+    User getUserFromDatabase(const string& username) { /* ... */ return User(); }
+};
+```
+
+</template>
+</CodeTabs>
+
 #### ✅ Solution
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 public class AuthenticationService {
@@ -369,9 +812,59 @@ public class UserRepository {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class User {};
+
+class AuthenticationService {
+public:
+    bool validateUser(const string& username, const string& password) {
+        cout << "Validating user: " << username << endl;
+        return true;
+    }
+};
+
+class EmailService {
+public:
+    void sendPasswordResetEmail(const string& email) {
+        cout << "Sending password reset email to: " << email << endl;
+    }
+};
+
+class ActivityLogger {
+public:
+    void logUserActivity(const string& username, const string& activity) {
+        cout << "User " << username << " performed: " << activity << endl;
+    }
+};
+
+class UserRepository {
+public:
+    void saveUser(const User& user) { cout << "User saved to DB\n"; }
+    User getUser(const string& username) { cout << "Getting user from DB\n"; return User(); }
+};
+```
+
+</template>
+</CodeTabs>
+
 ### Example 2: Order Processing
 
 #### ❌ Violation
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 public class Order {
@@ -386,7 +879,40 @@ public class Order {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class OrderItem {};
+
+class Order {
+    vector<OrderItem> items;
+public:
+    void addItem(const OrderItem& item) { /* ... */ }
+    double calculateTotal() { /* ... */ return 0.0; }
+    double calculateTax() { /* ... */ return 0.0; }
+    void saveToDatabase() { /* ... */ }
+    void sendConfirmationEmail() { /* ... */ }
+    void updateInventory() { /* ... */ }
+};
+```
+
+</template>
+</CodeTabs>
+
 #### ✅ Solution
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 public class Order {
@@ -412,6 +938,47 @@ public class InventoryService {
     public void updateInventory(Order order) { ... }
 }
 ```
+
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class OrderItem {};
+class Order {
+    vector<OrderItem> items;
+public:
+    void addItem(const OrderItem& item) { cout << "Item added\n"; }
+};
+
+class OrderCalculator {
+public:
+    double calculateTotal(const Order& order) { cout << "Calculating total\n"; return 100.0; }
+    double calculateTax(const Order& order) { cout << "Calculating tax\n"; return 18.0; }
+};
+
+class OrderRepository {
+public:
+    void save(const Order& order) { cout << "Order saved to database\n"; }
+};
+
+class OrderNotificationService {
+public:
+    void sendConfirmationEmail(const Order& order) { cout << "Email sent to customer\n"; }
+};
+
+class InventoryService {
+public:
+    void updateInventory(const Order& order) { cout << "Inventory updated\n"; }
+};
+```
+
+</template>
+</CodeTabs>
 
 ## 🔍 How to Identify SRP Violations
 
@@ -518,6 +1085,13 @@ public class OrderService {
 
 ### Example Refactoring Process
 
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
+
 ```java
 // Before: Mixed responsibilities
 public class BookService {
@@ -553,11 +1127,70 @@ public class BookService {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Book {
+    string title;
+public:
+    Book(string t) : title(t) {}
+    string getTitle() const { return title; }
+};
+
+class BookRepository {
+public:
+    void save(const Book& book) { cout << "Book saved: " << book.getTitle() << endl; }
+    vector<Book> findByQuery(const string& query) {
+        cout << "Searching for books: " << query << endl;
+        return {};
+    }
+};
+
+class NotificationService {
+public:
+    void sendNotification(const string& message) {
+        cout << "Notification: " << message << endl;
+    }
+};
+
+class ReportGenerator {
+public:
+    void generateBookReport() { cout << "Generating book report\n"; }
+};
+
+class BookService {
+    BookRepository repository;
+    NotificationService notificationService;
+public:
+    void addBook(const Book& book) {
+        repository.save(book);
+        notificationService.sendNotification("Book added: " + book.getTitle());
+    }
+};
+```
+
+</template>
+</CodeTabs>
+
 ## 🎓 Practice Exercise
 
 ### Exercise: Refactor the Violation
 
 Here's a class that violates SRP. Can you refactor it?
+
+<CodeTabs :languages="[
+{name : 'C++', slot : 'cpp'},
+{name : 'Java', slot : 'java'}
+]">
+
+<template #java>
 
 ```java
 public class StudentManager {
@@ -585,6 +1218,41 @@ public class StudentManager {
     public void generateStudentTranscript(String studentId) { ... }
 }
 ```
+
+</template>
+<template #cpp>
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class Student {};
+
+class StudentManager {
+    vector<Student> students;
+public:
+    void addStudent(const Student& student) { /* ... */ }
+    void removeStudent(const string& id) { /* ... */ }
+    Student findStudent(const string& id) { /* ... */ return Student(); }
+
+    double calculateGPA(const string& id) { /* ... */ return 0.0; }
+    string getGradeLevel(double gpa) { /* ... */ return "A"; }
+
+    void saveToFile(const string& filename) { /* ... */ }
+    void loadFromFile(const string& filename) { /* ... */ }
+
+    void sendGradeReport(const string& id) { /* ... */ }
+    void sendWelcomeEmail(const Student& student) { /* ... */ }
+
+    void generateClassReport() { /* ... */ }
+    void generateStudentTranscript(const string& id) { /* ... */ }
+};
+```
+
+</template>
+</CodeTabs>
 
 ### Solution Approach
 
