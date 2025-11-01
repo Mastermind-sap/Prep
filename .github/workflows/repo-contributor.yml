@@ -1,4 +1,4 @@
-name: All Contributors
+name: Generate Contributors
 
 on:
     push:
@@ -20,9 +20,11 @@ jobs:
                   token: ${{ secrets.METRIC_TOKEN }}
                   user: raj8664
                   repo: Prep
-                  base: ''
                   template: repository
+                  base: ''
                   filename: metrics.plugin.contributors.svg
                   plugin_contributors: yes
                   plugin_contributors_sections: contributors
-                  plugin_contributors_base: main
+                  plugin_contributors_head: main
+                  plugin_contributors_base: ''
+                  output_action: commit

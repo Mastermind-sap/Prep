@@ -16,7 +16,7 @@ A comprehensive, well-organized collection of notes, code implementations, solut
 
 <div align = "center">
 
-<img src = "./metrics.plugin.contributors.categories.svg" alt = "contributors">
+<img src = "./metrics.plugin.contributors.svg" alt = "contributors">
 
 </div>
 
