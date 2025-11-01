@@ -14,6 +14,12 @@
 A comprehensive, well-organized collection of notes, code implementations, solutions, and study materials for various computer science subjects. This repository serves as a one-stop resource for students, professionals, and anyone preparing for technical interviews, exams, or looking to strengthen their CS fundamentals.
 </p>
 
+<div align = "center">
+
+<img src = "./metrics.plugin.contributors.categories.svg" alt = "contributors">
+
+</div>
+
 ## 🌐 Live Website
 
 Visit the live documentation: [https://raj8664.github.io/Prep](https://raj8664.github.io/Prep)
