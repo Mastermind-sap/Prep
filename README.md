@@ -93,6 +93,12 @@ Special thanks to:
 - Contributors who have added valuable content
 - Students who provided feedback
 
+<div align = "center">
+
+<img src="metrics.plugin.people.repository.svg" alt="repo-info">
+
+</div>
+
 ---
 
 ## 📬 Contact
