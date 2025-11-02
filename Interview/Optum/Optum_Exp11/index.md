@@ -81,7 +81,7 @@ Interviewers love candidates who show genuine curiosity about tech trends, espec
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Zubair Rahman -->
+**✍️ Shared by:** Anonymous
 
 ---
 

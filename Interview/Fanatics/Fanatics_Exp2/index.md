@@ -114,7 +114,7 @@ Although I didn’t get selected, the experience helped me understand **where I 
 
 ---
 
-**✍️ Shared by:** Anonymous <!-- Arunav -->
+**✍️ Shared by:** Anonymous
 
 ---
 

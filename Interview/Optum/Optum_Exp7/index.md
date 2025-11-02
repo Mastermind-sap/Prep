@@ -59,7 +59,7 @@ Try to engage actively during HR discussions and speak fluently to convey your t
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Juman Saikia -->
+**✍️ Shared by:** Anonymous
 
 ---
 

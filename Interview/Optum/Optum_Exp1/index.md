@@ -67,7 +67,7 @@ The rounds were smooth, and the interviewers were friendly and professional thro
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Arunav --> 
+**✍️ Shared by:** Anonymous 
 
 ---
 

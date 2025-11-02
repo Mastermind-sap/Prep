@@ -68,7 +68,7 @@ Focus on **clear communication**, **honesty**, and **project clarity** — these
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Gauri Jain -->
+**✍️ Shared by:** Anonymous
 
 ---
 
