@@ -295,7 +295,7 @@ onMounted(loadMarkdown)
       <input
         v-model="searchTerm"
         class="lc-search"
-        placeholder="🔍 Search problems or topics..."
+        placeholder="🔍 Search problems..."
         aria-label="search problems"
       />
 
