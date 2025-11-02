@@ -97,7 +97,7 @@ It helps you hold meaningful conversations that leave a lasting impression.
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Basudev Rawat  -->
+**✍️ Shared by:** Anonymous
 
 ---
 

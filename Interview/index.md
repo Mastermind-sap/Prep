@@ -45,6 +45,12 @@ features:
       title: Optum
       details: Where healthcare meets high code pressure, fixing bugs faster than symptoms and optimizing systems before patients.
       link: ./Optum
+
+    - icon: '<img src="https://logo.clearbit.com/goldmansachs.com" width="36" style="vertical-align:middle;">'
+      title: Goldman Sachs
+      details: Where finance meets flawless code, optimizing algorithms like portfolios and debugging systems before markets crash.
+      link: ./GoldmanSachs
+
 ---
 
 ## Contributing

@@ -102,7 +102,7 @@ My key takeaways were:
 
 ---
 
-**✍️ Shared by:** Anonymous <!-- Sumit -->
+**✍️ Shared by:** Anonymous
 
 ---
 

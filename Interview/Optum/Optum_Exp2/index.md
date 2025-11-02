@@ -92,7 +92,7 @@ Overall, it was a **great learning experience** that strengthened my confidence 
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Penmatsa Nikhita -->
+**✍️ Shared by:** Anonymous
 
 ---
 

@@ -86,7 +86,7 @@ Sometimes, interviewers test how you **think under uncertainty** rather than wha
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Krishna Harlalka -->
+**✍️ Shared by:** Anonymous
 
 ---
 

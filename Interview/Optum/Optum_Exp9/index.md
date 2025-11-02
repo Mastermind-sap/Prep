@@ -78,7 +78,7 @@ Brush up on Python libraries, frontend fundamentals, and tools you’ve worked w
 
 ---
 
-**✍️ Shared by:** Anonymous <!-- Vikrant Agarwal --> 
+**✍️ Shared by:** Anonymous
 
 ---
 

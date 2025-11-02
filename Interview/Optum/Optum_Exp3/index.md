@@ -80,7 +80,7 @@ Confidence and honesty go a long way.
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Emon Chetia -->
+**✍️ Shared by:** Anonymous
 
 ---
 

@@ -70,7 +70,7 @@ Be honest, stay calm, and always show a willingness to learn. These qualities le
 
 ---
 
-**✍️ Shared by:** Anonymous  <!-- Vivek Shankar -->
+**✍️ Shared by:** Anonymous
 
 ---
 
