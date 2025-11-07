@@ -1377,6 +1377,7 @@ Leetcode Solutions
 | [1772-create-sorted-array-through-instructions](./1772-create-sorted-array-through-instructions)     |
 | [2512-longest-uploaded-prefix](./2512-longest-uploaded-prefix)                                       |
 | [2513-number-of-pairs-satisfying-inequality](./2513-number-of-pairs-satisfying-inequality)           |
+| [2618-maximize-the-minimum-powered-city](./2618-maximize-the-minimum-powered-city)                   |
 | [2839-maximum-sum-queries](./2839-maximum-sum-queries)                                               |
 | [3181-find-building-where-alice-and-bob-can-meet](./3181-find-building-where-alice-and-bob-can-meet) |
 | [3466-number-of-subarrays-with-and-value-of-k](./3466-number-of-subarrays-with-and-value-of-k)       |
