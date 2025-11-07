@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-An open-source learning website designed to guide you through your entire computer science journey. We bridge the gap between academic theory and real-world interviews by providing everything in one place: curated notes, previous year's questions (PYQs), LeetCode solutions, and authentic interview experiences from top tech companies.
+An open-source learning platform designed to guide you through your entire computer science journey. We bridge the gap between academic theory and real-world interviews by providing everything in one place: curated notes, previous year's questions (PYQs), LeetCode solutions, and authentic interview experiences from top tech companies.
 </p>
 
 <div align = "center">
