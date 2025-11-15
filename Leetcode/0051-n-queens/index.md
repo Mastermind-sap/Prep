@@ -122,10 +122,92 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<char>> board(n, vector<char>(n, '.'));
+        vector<vector<string>> res;
+        solve(board, 0, res);
+        return res;
+    }
+
+private:
+    void solve(vector<vector<char>>& board, int current_row, vector<vector<string>>& res) {
+        int n = board.size();
+        if (current_row == n) {
+            vector<string> temp;
+            for (int i = 0; i < n; i++) {
+                string rowStr;
+                for (int j = 0; j < n; j++)
+                    rowStr += board[i][j];
+                temp.push_back(rowStr);
+            }
+            res.push_back(temp);
+            return;
+        }
+
+        for (int col = 0; col < n; col++) {
+            if (check(current_row, col, board)) {
+                board[current_row][col] = 'Q';
+                solve(board, current_row + 1, res);
+                board[current_row][col] = '.';
+            }
+        }
+    }
+
+    bool check(int row, int col, vector<vector<char>>& board) {
+        int n = board.size();
+
+        // Check row
+        for (int j = 0; j < n; j++)
+            if (board[row][j] == 'Q')
+                return false;
+
+        // Check column
+        for (int i = 0; i < n; i++)
+            if (board[i][col] == 'Q')
+                return false;
+
+        // Down-right diagonal
+        int cr = row, cc = col;
+        while (cr < n && cc < n) {
+            if (board[cr][cc] == 'Q')
+                return false;
+            cr++; cc++;
+        }
+
+        // Down-left diagonal
+        cr = row; cc = col;
+        while (cr < n && cc >= 0) {
+            if (board[cr][cc] == 'Q')
+                return false;
+            cr++; cc--;
+        }
+
+        // Up-right diagonal
+        cr = row; cc = col;
+        while (cr >= 0 && cc < n) {
+            if (board[cr][cc] == 'Q')
+                return false;
+            cr--; cc++;
+        }
+
+        // Up-left diagonal
+        cr = row; cc = col;
+        while (cr >= 0 && cc >= 0) {
+            if (board[cr][cc] == 'Q')
+                return false;
+            cr--; cc--;
+        }
+
+        return true;
+    }
+};
 ```
 
 </template>
 
 </CodeTabs>
-

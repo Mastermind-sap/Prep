@@ -86,7 +86,46 @@ public class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<string> addOperators(string num, int target) {
+        vector<string> rst;
+        if (num.empty()) return rst;
+        helper(rst, "", num, target, 0, 0, 0);
+        return rst;
+    }
+private:
+    void helper(vector<string> &rst, string path, const string &num,
+                long target, int pos, long eval, long multed) {
+        if (pos == num.size()) {
+            if (eval == target)
+                rst.push_back(path);
+            return;
+        }
+        for (int i = pos; i < num.size(); i++) {
+            // Leading zero check
+            if (i != pos && num[pos] == '0')
+                break;
+            long cur = stol(num.substr(pos, i - pos + 1));
+            if (pos == 0) {
+                helper(rst, path + to_string(cur), num, target, i + 1, cur, cur);
+            } else {
+                // +
+                helper(rst, path + "+" + to_string(cur), num, target,
+                       i + 1, eval + cur, cur);
+                // -
+                helper(rst, path + "-" + to_string(cur), num, target,
+                       i + 1, eval - cur, -cur);
+                // *
+                helper(rst, path + "*" + to_string(cur), num, target,
+                       i + 1, eval - multed + multed * cur, multed * cur);
+            }
+        }
+    }
+};
 ```
 
 </template>

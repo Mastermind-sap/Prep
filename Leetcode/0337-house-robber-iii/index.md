@@ -136,7 +136,89 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+/**
+ * Definition for a binary tree node.
+ */
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class Solution {
+public:
+    vector<vector<int>> adj;
+    vector<int> cost;
+    vector<int> dp1, dp2;
+    int rob(TreeNode* root) {
+        if (!root) return 0;
+        build_tree(root);
+        dp1.assign(10001, 0);   // taking node i
+        dp2.assign(10001, 0);   // NOT taking node i
+
+        dfs(1, -1);
+
+        return max(dp1[1], dp2[1]);
+    }
+
+private:
+    void dfs(int u, int par) {
+        if (adj[u].size() == 1 && u != 1) {
+            dp1[u] = cost[u];
+            dp2[u] = 0;
+            return;
+        }
+        for (int v : adj[u]) {
+            if (v != par) {
+                dfs(v, u);
+
+                dp2[u] += max(dp1[v], dp2[v]);
+                dp1[u] += dp2[v];
+            }
+        }
+        dp1[u] += cost[u];
+    }
+
+    void build_tree(TreeNode* root) {
+        adj.assign(10002, vector<int>());
+        cost.assign(100002, 0);
+        unordered_map<TreeNode*, int> idmap;
+        int id = 1;
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            TreeNode* node = q.front();
+            q.pop();
+            if (!idmap.count(node))
+                idmap[node] = id++;
+            int u = idmap[node];
+            cost[u] = node->val;
+            if (node->left) {
+                idmap[node->left] = id;
+                int v = id;
+                cost[v] = node->left->val;
+                adj[u].push_back(v);
+                adj[v].push_back(u);
+                id++;
+                q.push(node->left);
+            }
+            if (node->right) {
+                idmap[node->right] = id;
+                int v = id;
+                cost[v] = node->right->val;
+                adj[u].push_back(v);
+                adj[v].push_back(u);
+                cost[v] = node->right->val;
+                id++;
+                q.push(node->right);
+            }
+        }
+    }
+};
 ```
 
 </template>

@@ -92,7 +92,57 @@ public class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    long long count = 0;
+    long long lowerBound, upperBound;
+    int countRangeSum(vector<int>& nums, int lower, int upper) {
+        int n = nums.size();
+        vector<long long> sum(n + 1, 0), temp(n + 1, 0);
+        this->lowerBound = lower;
+        this->upperBound = upper;
+        count = 0;
+        for (int i = 1; i <= n; i++)
+            sum[i] = sum[i - 1] + nums[i - 1];
+
+        mergesort(sum, 0, n, temp);
+        return (int)count;
+    }
+
+private:
+    void mergesort(vector<long long>& sum, int start, int end, vector<long long>& temp) {
+        if (start >= end)
+            return;
+        int mid = start + (end - start) / 2;
+        mergesort(sum, start, mid, temp);
+        mergesort(sum, mid + 1, end, temp);
+        merge(sum, start, mid, end, temp);
+    }
+
+    void merge(vector<long long>& sum, int start, int mid, int end, vector<long long>& temp) {
+        int right = mid + 1;
+        int index = start;
+        int low = mid + 1, high = mid + 1;
+        for (int left = start; left <= mid; left++) {
+            while (low <= end && sum[low] - sum[left] < lowerBound)
+                low++;
+            while (high <= end && sum[high] - sum[left] <= upperBound)
+                high++;
+            while (right <= end && sum[right] < sum[left])
+                temp[index++] = sum[right++];
+            temp[index++] = sum[left];
+            count += (high - low);
+        }
+        while (right <= end)
+            temp[index++] = sum[right++];
+
+        for (int i = start; i <= end; i++)
+            sum[i] = temp[i];
+    }
+};
 ```
 
 </template>

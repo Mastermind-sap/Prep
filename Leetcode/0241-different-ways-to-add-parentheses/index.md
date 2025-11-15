@@ -94,7 +94,54 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> diffWaysToCompute(string expression) {
+        unordered_map<string, vector<int>> mp;
+        return solve(expression, mp);
+    }
+
+private:
+    vector<int> solve(const string &expression, unordered_map<string, vector<int>> &mp) {
+        if (mp.count(expression))
+            return mp[expression];
+        vector<int> values;
+        if (!hasOperator(expression)) {
+            values.push_back(stoi(expression));
+            mp[expression] = values;
+            return values;
+        }
+        for (int i = 0; i < expression.length(); i++) {
+            char symbol = expression[i];
+            if (!isdigit(symbol)) {
+                string left  = expression.substr(0, i);
+                string right = expression.substr(i + 1);
+                vector<int> leftParts  = solve(left, mp);
+                vector<int> rightParts = solve(right, mp);
+                for (int l : leftParts) {
+                    for (int r : rightParts) {
+                        if (symbol == '+') values.push_back(l + r);
+                        else if (symbol == '-') values.push_back(l - r);
+                        else if (symbol == '*') values.push_back(l * r);
+                    }
+                }
+            }
+        }
+        mp[expression] = values;
+        return values;
+    }
+
+    bool hasOperator(const string &expression) {
+        for (char c : expression) {
+            if (c == '+' || c == '-' || c == '*')
+                return true;
+        }
+        return false;
+    }
+};
 ```
 
 </template>

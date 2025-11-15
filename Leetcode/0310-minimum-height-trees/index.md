@@ -93,7 +93,49 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+        vector<vector<int>> adj(n + 2);
+        for (auto &e : edges) {
+            int u = e[0], v = e[1];
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+        vector<int> degree(n);
+        for (int i = 0; i < n; i++)
+            degree[i] = adj[i].size();
+        queue<int> q;
+        for (int i = 0; i < n; i++)
+            if (degree[i] == 1)
+                q.push(i);
+        int nodes = n;
+        while (nodes > 2) {
+            int len = q.size();
+            nodes -= len;
+            for (int i = 0; i < len; i++) {
+                int current = q.front();
+                q.pop();
+                for (int child : adj[current]) {
+                    degree[child]--;
+                    if (degree[child] == 1)
+                        q.push(child);
+                }
+            }
+        }
+        vector<int> res;
+        while (!q.empty()) {
+            res.push_back(q.front());
+            q.pop();
+        }
+        if (res.empty())
+            return {0};
+        return res;
+    }
+};
 ```
 
 </template>

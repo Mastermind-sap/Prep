@@ -91,7 +91,45 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
+        vector<vector<int>> res;
+        vector<pair<int,int>> heights;
+        for (auto &curr : buildings) {
+            heights.push_back({curr[0], -curr[2]}); // start point → negative height
+            heights.push_back({curr[1],  curr[2]}); // end point   → positive height
+        }
+        // Sort by x; if tie, by height
+        sort(heights.begin(), heights.end(),
+             [](auto &a, auto &b) {
+                 if (a.first == b.first) return a.second < b.second;
+                 return a.first < b.first;
+             });
+        multiset<int> pq;   // behaves like max-heap with remove() support
+        pq.insert(0);
+        int prev_maxi = 0;
+        for (auto &h : heights) {
+            int x = h.first;
+            int height = h.second;
+            if (height < 0) {
+                pq.insert(-height);
+            } else {
+                pq.erase(pq.find(height));
+            }
+            int current_maxi = *pq.rbegin();
+            if (current_maxi != prev_maxi) {
+                res.push_back({x, current_maxi});
+                prev_maxi = current_maxi;
+            }
+        }
+        return res;
+    }
+};
+
 ```
 
 </template>

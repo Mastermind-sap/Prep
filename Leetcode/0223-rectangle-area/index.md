@@ -94,7 +94,53 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    class Rectangle {
+    public:
+        int x1, y1, x2, y2;
+        Rectangle(int _x1, int _y1, int _x2, int _y2) {
+            x1 = _x1;
+            y1 = _y1;
+            x2 = _x2;
+            y2 = _y2;
+        }
+
+        int getArea() const {
+            return abs(x2 - x1) * abs(y2 - y1);
+        }
+
+        static int getIntersectionArea(const Rectangle &r1, const Rectangle &r2) {
+            int intersectX1 = max(r1.x1, r2.x1);
+            int intersectY1 = max(r1.y1, r2.y1);
+            int intersectX2 = min(r1.x2, r2.x2);
+            int intersectY2 = min(r1.y2, r2.y2);
+            if (intersectX1 < intersectX2 && intersectY1 < intersectY2) {
+                int width  = intersectX2 - intersectX1;
+                int height = intersectY2 - intersectY1;
+                return width * height;
+            }
+            return 0;
+        }
+
+        static int getAreaBetween(const Rectangle &r1, const Rectangle &r2) {
+            int areaR1 = r1.getArea();
+            int areaR2 = r2.getArea();
+            int intersectionArea = getIntersectionArea(r1, r2);
+            return (areaR1 + areaR2) - intersectionArea;
+        }
+    };
+
+    int computeArea(int ax1, int ay1, int ax2, int ay2,
+                    int bx1, int by1, int bx2, int by2) {
+        Rectangle r1(ax1, ay1, ax2, ay2);
+        Rectangle r2(bx1, by1, bx2, by2);
+        return Rectangle::getAreaBetween(r1, r2);
+    }
+};
 ```
 
 </template>

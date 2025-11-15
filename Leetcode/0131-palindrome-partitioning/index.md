@@ -74,7 +74,49 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<string>> res;
+
+    vector<vector<string>> partition(string s) {
+        res.clear();
+        vector<string> temp;
+        solve(0, s, temp);
+        return res;
+    }
+
+private:
+    void solve(int ind, string &s, vector<string> &temp) {
+        if (ind >= s.length()) {
+            res.push_back(temp);
+            return;
+        }
+
+        for (int i = ind; i < s.length(); i++) {
+            string current = s.substr(ind, i - ind + 1);
+            if (is_pallindrome(current)) {
+                temp.push_back(current);
+                solve(i + 1, s, temp);
+                temp.pop_back();
+            }
+        }
+    }
+
+    bool is_pallindrome(const string &s) {
+        int low = 0, high = s.length() - 1;
+        while (low <= high) {
+            if (s[low] != s[high])
+                return false;
+            low++;
+            high--;
+        }
+        return true;
+    }
+};
+
 ```
 
 </template>

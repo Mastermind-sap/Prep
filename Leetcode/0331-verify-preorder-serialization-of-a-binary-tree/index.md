@@ -63,7 +63,6 @@ class Solution {
         return count == 0;
     }
 }
-
 ```
 
 </template>
@@ -71,7 +70,30 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    bool isValidSerialization(string preorder) {
+        int count = 1;
+        vector<string> nodes;
+        string temp;
+        stringstream ss(preorder);
+        while (getline(ss, temp, ',')) {
+            nodes.push_back(temp);
+        }
+        for (const string &node : nodes) {
+            if (count <= 0)
+                return false;
+            if (node == "#")
+                count--;
+            else
+                count++;
+        }
+        return count == 0;
+    }
+};
 ```
 
 </template>
