@@ -82,7 +82,32 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    bool check(const vector<int>& res) {
+        int n = res.size();
+        if (n < 3) return false;
+        int diff = res[1] - res[0];
+        for (int i = 0; i < n - 1; i++) {
+            if (res[i + 1] - res[i] != diff)
+                return false;
+        }
+        return true;
+    }
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int n = nums.size();
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            vector<int> temp;
+            for (int j = i; j < n; j++) {
+                temp.push_back(nums[j]);
+                if (check(temp))
+                    count++;
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>

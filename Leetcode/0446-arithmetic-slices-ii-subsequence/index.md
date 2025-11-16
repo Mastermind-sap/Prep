@@ -83,7 +83,23 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int n = nums.size();
+        vector<unordered_map<long long, int>> dp(n);
+        long long res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                long long diff = (long long)nums[i] - (long long)nums[j];
+                int prev = dp[j].count(diff) ? dp[j][diff] : 0;
+                res += prev;
+                dp[i][diff] += prev + 1;
+            }
+        }
+        return (int)res;
+    }
+};
 ```
 
 </template>

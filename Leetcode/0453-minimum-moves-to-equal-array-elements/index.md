@@ -59,7 +59,20 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        int n = nums.size();
+        int mini = nums[0];
+        for (int i = 1; i < n; i++)
+            mini = min(mini, nums[i]);
+        long long res = 0;
+        for (int ele : nums)
+            res += ele - mini;
+
+        return (int)res;
+    }
+};
 ```
 
 </template>

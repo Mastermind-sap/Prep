@@ -71,7 +71,30 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int fourSumCount(vector<int>& nums1, vector<int>& nums2,
+                     vector<int>& nums3, vector<int>& nums4) {
+        int n = nums1.size();
+        unordered_map<int, int> mp;   // sum → frequency
+        int count = 0;
+        // Store all sums of nums3 + nums4
+        for (int a : nums3) {
+            for (int b : nums4) {
+                mp[a + b] += 1;
+            }
+        }
+        // Count complementary sums from nums1 + nums2
+        for (int a : nums1) {
+            for (int b : nums2) {
+                int req = -(a + b);
+                if (mp.count(req))
+                    count += mp[req];
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>

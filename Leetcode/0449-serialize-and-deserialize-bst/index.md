@@ -129,7 +129,90 @@ public class Codec {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+/**
+ * Definition for a binary tree node.
+ */
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class Codec {
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        if (!root) return "";
+        string res = "";
+        res += to_string(root->val) + ":";
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            int len = q.size();
+            for (int i = 0; i < len; i++) {
+                TreeNode* node = q.front();
+                if (node->left) {
+                    q.push(node->left);
+                    res += to_string(node->left->val) + ":";
+                } else {
+                    res += "-100000:";
+                }
+                if (node->right) {
+                    q.push(node->right);
+                    res += to_string(node->right->val) + ":";
+                } else {
+                    res += "-100000:";
+                }
+                q.pop();
+            }
+        }
+        return res;
+    }
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        if (data.size() == 0) return nullptr;
+        vector<int> vals;
+        string current = "";
+        for (char c : data) {
+            if (c == ':') {
+                vals.push_back(stoi(current));
+                current.clear();
+            } else {
+                current.push_back(c);
+            }
+        }
+        if (vals.size() == 0) return nullptr;
+        TreeNode* root = new TreeNode(vals[0]);
+        int idx = 1;
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            TreeNode* node = q.front();
+            q.pop();
+            int left = -100000, right = -100000;
+            if (idx < vals.size()) left = vals[idx++];
+            if (idx < vals.size()) right = vals[idx++];
+
+            // left child
+            if (left == -100000) {
+                node->left = nullptr;
+            } else {
+                node->left = new TreeNode(left);
+                q.push(node->left);
+            }
+
+            // right child
+            if (right == -100000) {
+                node->right = nullptr;
+            } else {
+                node->right = new TreeNode(right);
+                q.push(node->right);
+            }
+        }
+        return root;
+    }
+};
 ```
 
 </template>

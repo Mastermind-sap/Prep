@@ -109,7 +109,59 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    struct Pair {
+        int value, row, col;
+        Pair(int v, int r, int c) : value(v), row(r), col(c) {}
+    };
+    struct custom_sort {
+        bool operator()(const Pair& a, const Pair& b) const {
+            return a.value > b.value;  // min-heap behavior
+        }
+    };
+    int trapRainWater(vector<vector<int>>& arr) {
+        int n = arr.size();
+        int m = arr[0].size();
+        priority_queue<Pair, vector<Pair>, custom_sort> pq;
+        vector<vector<int>> vis(n, vector<int>(m, 0));
+        for (int j = 0; j < m; j++) {
+            vis[0][j] = 1;
+            pq.push(Pair(arr[0][j], 0, j));
+        }
+        for (int i = 0; i < n; i++) {
+            vis[i][m - 1] = 1;
+            pq.push(Pair(arr[i][m - 1], i, m - 1));
+        }
+        for (int i = 0; i < n; i++) {
+            vis[i][0] = 1;
+            pq.push(Pair(arr[i][0], i, 0));
+        }
+        for (int j = 0; j < m; j++) {
+            vis[n - 1][j] = 1;
+            pq.push(Pair(arr[n - 1][j], n - 1, j));
+        }
+        int dir[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+        int res = 0;
+        while (!pq.empty()) {
+            Pair p = pq.top();
+            pq.pop();
+            int cr = p.row;
+            int cc = p.col;
+            int cval = p.value;
+            for (auto& d : dir) {
+                int nr = cr + d[0];
+                int nc = cc + d[1];
+                if (nr >= 0 && nc >= 0 && nr < n && nc < m && vis[nr][nc] == 0) {
+                    vis[nr][nc] = 1;
+                    res += max(0, cval - arr[nr][nc]);
+                    pq.push(Pair(max(cval, arr[nr][nc]), nr, nc));
+                }
+            }
+        }
+        return res;
+    }
+};
 ```
 
 </template>

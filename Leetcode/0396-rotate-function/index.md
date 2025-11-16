@@ -83,7 +83,28 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int maxRotateFunction(vector<int>& nums) {
+        int n = nums.size();
+        long long sumAdd = 0, current_ans = 0;
+        for (int i = 0; i < n; i++) {
+            if (i < n - 1)
+                sumAdd += nums[i];
+            current_ans += 1LL * nums[i] * i;
+        }
+        long long maxi = current_ans;
+        for (int i = n - 1; i >= 0; i--) {
+            current_ans -= 1LL * nums[i] * (n - 1);
+            current_ans += sumAdd;
+            sumAdd += nums[i];
+            if (i - 1 >= 0)
+                sumAdd -= nums[i - 1];
+            maxi = max(maxi, current_ans);
+        }
+        return (int)maxi;
+    }
+};
 ```
 
 </template>

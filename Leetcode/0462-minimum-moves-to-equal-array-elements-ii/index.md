@@ -62,7 +62,21 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int solve(const vector<int>& arr, int target) {
+        int res = 0;
+        for (int ele : arr)
+            res += abs(target - ele);
+        return res;
+    }
+
+    int minMoves2(vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        return solve(nums, nums[n / 2]);
+    }
+};
 ```
 
 </template>

@@ -121,7 +121,55 @@ class AllOne {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class AllOne {
+private:
+    unordered_map<string, int> mp;                       // key → freq
+    map<int, unordered_set<string>> freqMap;             // freq → {keys}
+public:
+    AllOne() {}
+    void inc(string key) {
+        if (mp.count(key)) {
+            int freq = mp[key];
+            mp[key] = freq + 1;
+
+            freqMap[freq].erase(key);
+            if (freqMap[freq].empty())
+                freqMap.erase(freq);
+
+            freqMap[freq + 1].insert(key);
+        } else {
+            mp[key] = 1;
+            freqMap[1].insert(key);
+        }
+    }
+    void dec(string key) {
+        if (!mp.count(key))
+            return;
+        int freq = mp[key];
+        if (freq == 1) {
+            mp.erase(key);
+            freqMap[1].erase(key);
+            if (freqMap[1].empty())
+                freqMap.erase(1);
+        } else {
+            mp[key] = freq - 1;
+            freqMap[freq].erase(key);
+            if (freqMap[freq].empty())
+                freqMap.erase(freq);
+            freqMap[freq - 1].insert(key);
+        }
+    }
+    string getMaxKey() {
+        if (freqMap.empty())
+            return "";
+        return *(freqMap.rbegin()->second.begin());
+    }
+    string getMinKey() {
+        if (freqMap.empty())
+            return "";
+        return *(freqMap.begin()->second.begin());
+    }
+};
 ```
 
 </template>
