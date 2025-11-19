@@ -65,7 +65,25 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maxChunksToSorted(vector<int>& arr) {
+        int n = arr.size();
+        int count = 0;
+        int maxi = INT_MIN;
+        stack<int> st;
+        for (int i = 0; i < n; i++) {
+            maxi = max(maxi, arr[i]);
+            while (!st.empty() && st.top() > arr[i])
+                st.pop();
+            st.push(maxi);
+        }
+        return st.size();
+    }
+};
 ```
 
 </template>

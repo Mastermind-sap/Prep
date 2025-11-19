@@ -66,7 +66,33 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int node, ind;
+        Pair(int n, int i) : node(n), ind(i) {}
+    };
+
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n = temperatures.size();
+        stack<Pair> st;
+        vector<int> ans(n);
+        for (int i = n - 1; i >= 0; i--) {
+            int current_ele = temperatures[i];
+            while (!st.empty() && st.top().node <= current_ele)
+                st.pop();
+            if (st.empty())
+                ans[i] = 0;
+            else
+                ans[i] = st.top().ind - i;
+            st.push(Pair(current_ele, i));
+        }
+        return ans;
+    }
+};
 ```
 
 </template>

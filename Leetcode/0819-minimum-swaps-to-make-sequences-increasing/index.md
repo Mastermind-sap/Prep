@@ -79,7 +79,41 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> dp;
+
+    int minSwap(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        dp.assign(n + 1, vector<int>(2, -1));
+        return solve(nums1, nums2, -1, -1, 0, 0);
+    }
+
+    int solve(vector<int>& arr, vector<int>& brr, int prevA, int prevB, int ind, int swap) {
+        if (ind >= arr.size())
+            return 0;
+
+        if (dp[ind][swap] != -1)
+            return dp[ind][swap];
+
+        int mini = INT_MAX / 10;
+
+        // Case 1: Do not swap
+        if (arr[ind] > prevA && brr[ind] > prevB) {
+            mini = min(mini, solve(arr, brr, arr[ind], brr[ind], ind + 1, 0));
+        }
+
+        // Case 2: Swap
+        if (arr[ind] > prevB && brr[ind] > prevA) {
+            mini = min(mini, 1 + solve(arr, brr, brr[ind], arr[ind], ind + 1, 1));
+        }
+
+        return dp[ind][swap] = mini;
+    }
+};
 ```
 
 </template>

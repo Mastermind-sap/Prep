@@ -97,7 +97,45 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Tuple {
+        int start, end, height;
+        Tuple(int s, int e, int h) : start(s), end(e), height(h) {}
+    };
+
+    vector<int> fallingSquares(vector<vector<int>>& positions) {
+        int n = positions.size();
+        vector<int> ans;
+        vector<Tuple> res;
+        int maxi = 0;
+        for (int i = 0; i < n; i++) {
+            int l = positions[i][0];
+            int r = l + positions[i][1] - 1;
+            int height = positions[i][1];
+            maxi = max(maxi, solve(res, Tuple(l, r, height)));
+            ans.push_back(maxi);
+        }
+        return ans;
+    }
+
+private:
+    int solve(vector<Tuple>& res, Tuple current) {
+        int curr_maxi = 0;
+        for (auto& x : res) {
+            // Check if segments overlap
+            if (x.end < current.start || x.start > current.end)
+                continue;
+            curr_maxi = max(curr_maxi, x.height);
+        }
+        current.height += curr_maxi;
+        res.push_back(current);
+        return current.height;
+    }
+};
 ```
 
 </template>

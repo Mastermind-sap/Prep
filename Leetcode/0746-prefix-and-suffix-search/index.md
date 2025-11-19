@@ -74,7 +74,32 @@ class WordFilter {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class WordFilter {
+public:
+    unordered_map<string, int> mp;
+    WordFilter(vector<string>& words) {
+        int n = words.size();
+        for (int i = 0; i < n; i++) {
+            string &w = words[i];
+            int len = w.length();
+            for (int j = 0; j < len; j++) {
+                string prefix = w.substr(0, j + 1);
+                for (int k = len - 1; k >= 0; k--) {
+                    string suffix = w.substr(k);
+                    mp[prefix + ":" + suffix] = i;
+                }
+            }
+        }
+    }
+    int f(string pref, string suff) {
+        string key = pref + ":" + suff;
+        if (mp.count(key)) return mp[key];
+        return -1;
+    }
+};
 ```
 
 </template>

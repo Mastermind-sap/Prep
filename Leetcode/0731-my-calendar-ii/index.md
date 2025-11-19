@@ -87,7 +87,38 @@ class MyCalendarTwo {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class MyCalendarTwo {
+public:
+    map<int, int> bookings;
+
+    MyCalendarTwo() {}
+
+    bool book(int start, int end) {
+        // Add +1 at start and -1 at end
+        bookings[start]++;
+        bookings[end]--;
+        int cnt = 0;
+        // Check if at any point count >= 3
+        for (auto &it : bookings) {
+            cnt += it.second;
+            if (cnt >= 3) {
+                // rollback
+                bookings[start]--;
+                if (bookings[start] == 0)
+                    bookings.erase(start);
+                bookings[end]++;
+                if (bookings[end] == 0)
+                    bookings.erase(end);
+
+                return false;
+            }
+        }
+        return true;
+    }
+};
 ```
 
 </template>

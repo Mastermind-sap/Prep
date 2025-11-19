@@ -111,7 +111,56 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int start, end;
+        Pair(int s, int e) : start(s), end(e) {}
+    };
+
+    struct custom_sort {
+        bool operator()(const Pair &first, const Pair &second) const {
+            if (first.end != second.end)
+                return first.end < second.end;           // sort by end ASC
+            return first.start > second.start;           // tie-break: start DESC
+        }
+    };
+
+    int intersectionSizeTwo(vector<vector<int>>& intervals) {
+        int n = intervals.size();
+        vector<Pair> res;
+        res.reserve(n);
+        for (auto &cur : intervals)
+            res.emplace_back(cur[0], cur[1]);
+        sort(res.begin(), res.end(), custom_sort());
+        int last = res[0].end;
+        int slast = res[0].end - 1;
+        int set_size = 2;
+        for (int i = 1; i < n; i++) {
+            int current_start = res[i].start;
+            int current_end = res[i].end;
+            // Case 1: both last and slast already inside
+            if (last >= current_start && slast >= current_start)
+                continue;
+            // Case 2: one inside, one outside
+            if (last >= current_start) {
+                slast = last;
+                last = current_end;
+                set_size++;
+            }
+            // Case 3: none inside → add two new points
+            else {
+                last = current_end;
+                slast = current_end - 1;
+                set_size += 2;
+            }
+        }
+        return set_size;
+    }
+};
 ```
 
 </template>

@@ -102,7 +102,49 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int numFriendRequests(vector<int>& ages) {
+        int n = ages.size();
+        int count = 0;
+        sort(ages.begin(), ages.end());
+        reverse(ages.begin(), ages.end());
+        unordered_map<int, int> mp;
+        for (int i = 0; i < n; i++) {
+            int current = ages[i];
+            int res = binarySearch(i, current, ages);
+            if (!mp.count(current))
+                mp[current] = res;
+        }
+        for (int i = 0; i < n; i++)
+            count += mp[ages[i]];
+        return count;
+    }
+
+private:
+    int binarySearch(int current_ind, int current, vector<int>& ages) {
+        int n = ages.size();
+        int low = current_ind + 1, high = n - 1, ans = -1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (ages[mid] <= current &&
+                ages[mid] > 0.5 * current + 7 &&
+                !(ages[mid] > 100 && current < 100)) {
+
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        if (ans == -1)
+            return 0;
+        return ans - current_ind;
+    }
+};
 ```
 
 </template>

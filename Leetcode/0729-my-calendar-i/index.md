@@ -85,7 +85,34 @@ class MyCalendar {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class MyCalendar {
+public:
+    struct Pair {
+        int start, end;
+        Pair(int s, int e) : start(s), end(e) {}
+    };
+
+    vector<Pair> bookings;
+
+    MyCalendar() {
+        bookings.clear();
+    }
+
+    bool book(int start, int end) {
+        for (auto &p : bookings) {
+            int current_start = p.start;
+            int current_end = p.end;
+            // Check overlap: start < current_end && end > current_start
+            if (start < current_end && end > current_start)
+                return false;
+        }
+        bookings.push_back(Pair(start, end));
+        return true;
+    }
+};
 ```
 
 </template>

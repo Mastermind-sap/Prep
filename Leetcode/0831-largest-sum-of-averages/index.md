@@ -80,7 +80,47 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<double>> dp;
+
+    double largestSumOfAverages(vector<int>& nums, int k) {
+        int n = nums.size();
+        dp.assign(n + 1, vector<double>(k + 1, DBL_MIN / 10.0));
+
+        return solve(0, k, nums);
+    }
+
+    double solve(int ind, int k, vector<int>& arr) {
+        if (ind == arr.size())
+            return 0.0;
+
+        if (dp[ind][k] != DBL_MIN / 10.0)
+            return dp[ind][k];
+
+        double sum = 0.0;
+
+        // Base case: only 1 group left → must take all remaining elements
+        if (k == 1) {
+            for (int i = ind; i < arr.size(); i++)
+                sum += arr[i];
+            return dp[ind][k] = sum / (arr.size() - ind);
+        }
+
+        double maxi = 0.0, count = 0.0;
+
+        for (int i = ind; i < arr.size(); i++) {
+            sum += arr[i];
+            count++;
+            double current = sum / count;
+            maxi = max(maxi, current + solve(i + 1, k - 1, arr));
+        }
+        return dp[ind][k] = maxi;
+    }
+};
 ```
 
 </template>

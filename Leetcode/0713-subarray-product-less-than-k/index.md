@@ -60,7 +60,27 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+        int n = nums.size();
+        int left = 0;
+        long long current_prod = 1, total = 0;
+        for (int right = 0; right < n; right++) {
+            current_prod *= nums[right];
+            while (left < right && current_prod >= k) {
+                current_prod /= nums[left];
+                left++;
+            }
+            if (current_prod < k)
+                total += (right - left + 1);
+        }
+        return (int)total;
+    }
+};
 ```
 
 </template>

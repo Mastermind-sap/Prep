@@ -69,7 +69,22 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int reachNumber(int target) {
+        if (target < 0)
+            target = -target;
+        long long res = 1, current_pos = 0;
+        while (current_pos < target)
+            current_pos += res++;
+        while (((current_pos - target) & 1) > 0)
+            current_pos += res++;
+        return (int)(res - 1);
+    }
+};
 ```
 
 </template>
