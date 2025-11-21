@@ -1,4 +1,4 @@
-# 📚 Prep - Computer Science Study Resources
+# 📚 ElevateU - Computer Science Study Resources
 
 <p align="center">
   <a href="https://raj8664.github.io/Prep"><img src="https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen" alt="GitHub Pages"></a>
@@ -22,18 +22,18 @@ An open-source learning platform designed to guide you through your entire compu
 
 ## 🌐 Live Website
 
-<a href="https://raj8664.github.io/Prep" target="_blank"> 👉 Dive into Prep</a>
+<a href="https://raj8664.github.io/Prep" target="_blank"> 🌐 ElevateU </a>
 
 ---
 
 ## 🎯 About
 
-This repository is designed to help computer science students and professionals in their learning journey. It contains:
+ElevateU is an open-source learning platform designed to help computer science students and professionals in their learning journey. It contains:
 
-- **Detailed Notes**: Comprehensive explanations of key concepts
+- **Detailed Notes**: Comprehensive explanations and notes of `Computer Science` concepts.
 - **Code Implementations**: Well-commented code in multiple programming languages
 - **Problem Solutions**: Solutions to common DSA problems as well as Leetcode questions.
-- **Interview Preparation**: Resources specifically tailored for technical interviews
+- **Interview Preparation**: Resources specifically tailored for `technical interviews`
 - **Exam Materials**: Notes and summaries for academic preparation
 
 The content is continuously updated and improved based on community feedback and contributions.
@@ -83,10 +83,10 @@ If you have questions about contributing:
 
 ## 🙏 Acknowledgments
 
-- Thanks to all contributors who have helped improve this repository
-- Inspired by various open-source educational resources
-- Community feedback and suggestions
-- Educational institutions and online learning platforms
+- Thanks to all contributors who have helped improve this project.
+- Inspired by various open-source educational resources.
+- Community feedback and suggestions.
+- Educational institutions and online learning platforms.
 
 Special thanks to:
 
