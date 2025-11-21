@@ -1,4 +1,10 @@
-# 📚 ElevateU - Computer Science Study Resources
+<div align = "center">
+
+<img  src = "https://res.cloudinary.com/dzgoq3ikq/image/upload/v1763727602/ele-copy-removebg-preview_yuhev5.png"/>
+
+</div>
+
+# 📚 Computer Science Study Resources
 
 <p align="center">
   <a href="https://raj8664.github.io/Prep"><img src="https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen" alt="GitHub Pages"></a>
