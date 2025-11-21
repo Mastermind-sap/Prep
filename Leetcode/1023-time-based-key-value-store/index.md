@@ -87,7 +87,7 @@ class TimeMap {
 <template #java>
 
 ```java
-// Add your C++ solution here
+// Add your Java solution here
 ```
 
 </template>

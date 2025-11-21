@@ -69,7 +69,25 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& arr, vector<vector<int>>& brr) {
+        vector<vector<int>> res;
+
+        int i = 0, j = 0;
+        while (i < arr.size() && j < brr.size()) {
+            int start = max(arr[i][0], brr[j][0]);
+            int end   = min(arr[i][1], brr[j][1]);
+            if (start <= end)
+                res.push_back({start, end});
+            if (arr[i][1] < brr[j][1])
+                i++;
+            else
+                j++;
+        }
+        return res;
+    }
+};
 ```
 
 </template>

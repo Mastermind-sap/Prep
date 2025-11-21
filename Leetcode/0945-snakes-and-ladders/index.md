@@ -100,7 +100,46 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int snakesAndLadders(vector<vector<int>>& board) {
+        int n = board.size();
+        unordered_map<int, int> dist;
+        dist[1] = 0;
+        queue<int> q;
+        q.push(1);
+        while (!q.empty()) {
+            int p = q.front();
+            q.pop();
+            if (p == n * n)
+                return dist[p];
+            for (int i = p + 1; i <= min(p + 6, n * n); i++) {
+                int pos = check(i, n);
+                int row = pos / n;
+                int col = pos % n;
+                int nextSquare = (board[row][col] == -1 ? i : board[row][col]);
+                if (!dist.count(nextSquare)) {
+                    dist[nextSquare] = dist[p] + 1;
+                    q.push(nextSquare);
+                }
+            }
+        }
+        return -1;
+    }
+
+    static int check(int i, int n) {
+        int q = (i - 1) / n;
+        int r = (i - 1) % n;
+        int row = n - 1 - q;
+        int col;
+        // zig-zag pattern
+        if (row % 2 != n % 2)
+            col = r;
+        else
+            col = n - 1 - r;
+        return row * n + col;
+    }
+};
 ```
 
 </template>

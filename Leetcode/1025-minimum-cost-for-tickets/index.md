@@ -86,7 +86,29 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+        vector<int> dp(366, 0);
+        unordered_set<int> travelDays;
+
+        for (int day : days)
+            travelDays.insert(day);
+
+        for (int i = 1; i <= 365; i++) {
+            if (travelDays.count(i) == 0) {
+                dp[i] = dp[i - 1];
+            } else {
+                dp[i] = min({
+                    dp[i - 1] + costs[0],
+                    dp[max(0, i - 7)] + costs[1],
+                    dp[max(0, i - 30)] + costs[2]
+                });
+            }
+        }
+        return dp[365];
+    }
+};
 ```
 
 </template>

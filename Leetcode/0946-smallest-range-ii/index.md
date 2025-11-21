@@ -71,7 +71,22 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int smallestRangeII(vector<int>& nums, int k) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        int maxi = nums[n - 1];
+        int mini = nums[0];
+        int res = maxi - mini;
+        for (int i = 0; i < n - 1; i++) {
+            int high = max(maxi, nums[i] + 2 * k);
+            int low  = min(nums[i + 1], nums[0] + 2 * k);
+            res = min(res, high - low);
+        }
+        return res;
+    }
+};
 ```
 
 </template>

@@ -75,7 +75,39 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    bool canReorderDoubled(vector<int>& arr) {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+
+        unordered_map<int, int> freq;
+        for (int x : arr)
+            freq[x]++;
+
+        for (int x : arr) {
+            if (freq[x] == 0)
+                continue;
+
+            if (x < 0 && x % 2 != 0)
+                return false;  // odd negative cannot be halved
+
+            int y;
+            if (x > 0)
+                y = 2 * x;
+            else
+                y = x / 2;
+
+            if (freq[y] == 0)
+                return false;
+
+            freq[x]--;
+            freq[y]--;
+        }
+
+        return true;
+    }
+};
 ```
 
 </template>

@@ -103,7 +103,41 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    string smallestEquivalentString(string s1, string s2, string baseStr) {
+        vector<int> parent(26);
+        for (int i = 0; i < 26; i++)
+            parent[i] = i;
+
+        // union operations
+        for (int i = 0; i < s1.size(); i++) {
+            int a = s1[i] - 'a';
+            int b = s2[i] - 'a';
+            int pa = find(parent, a);
+            int pb = find(parent, b);
+            if (pa < pb)
+                parent[pb] = pa;
+            else
+                parent[pa] = pb;
+        }
+        // build output
+        string res = "";
+        for (char c : baseStr) {
+            int root = find(parent, c - 'a');
+            res.push_back(char('a' + root));
+        }
+        return res;
+    }
+
+private:
+    int find(vector<int>& parent, int x) {
+        while (parent[x] != x)
+            x = parent[x];
+        return x;
+    }
+};
+
 ```
 
 </template>

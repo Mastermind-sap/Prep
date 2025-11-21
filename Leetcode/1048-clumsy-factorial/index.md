@@ -92,7 +92,43 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int clumsy(int n) {
+        char operation[4] = {'*', '/', '+', '-'};
+        int current_operation = 0;
+
+        vector<int> res;
+        int current_res = n;
+
+        for (int i = n - 1; i >= 1; i--) {
+            if (operation[current_operation] == '*') {
+                current_res *= i;
+            }
+            else if (operation[current_operation] == '/') {
+                current_res /= i;
+            }
+            else if (operation[current_operation] == '+') {
+                if (!res.empty())
+                    current_res -= i;
+                else
+                    current_res += i;
+            }
+            else { // operation '-'
+                res.push_back(current_res);
+                current_res = i;
+            }
+            current_operation = (current_operation + 1) % 4;
+        }
+        res.push_back(current_res);
+        if (res.empty())
+            return current_res;
+        int ans = res[0];
+        for (int i = 1; i < res.size(); i++)
+            ans -= res[i];
+        return ans;
+    }
+};
 ```
 
 </template>

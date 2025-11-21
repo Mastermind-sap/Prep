@@ -128,7 +128,81 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    unordered_map<int, vector<int>> mp;
+
+    struct DSU {
+        vector<int> parent, size;
+
+        DSU(int n) {
+            parent.resize(n + 1);
+            size.resize(n + 1, 1);
+            for (int i = 0; i <= n; i++)
+                parent[i] = i;
+        }
+
+        int find_parent(int u) {
+            if (parent[u] == u) return u;
+            return parent[u] = find_parent(parent[u]);
+        }
+
+        void unite(int u, int v) {
+            u = find_parent(u);
+            v = find_parent(v);
+            if (u == v) return;
+
+            if (size[v] > size[u])
+                swap(u, v);
+
+            parent[v] = u;
+            size[u] += size[v];
+        }
+    };
+
+    int largestComponentSize(vector<int>& nums) {
+        int n = nums.size();
+        mp.clear();
+
+        int maxEle = 0;
+        for (int x : nums)
+            maxEle = max(maxEle, x);
+
+        DSU dsu(maxEle + 1);
+
+        // compute divisors
+        for (int x : nums)
+            compute_div(x);
+
+        // connect nums sharing common factors
+        for (auto &p : mp) {
+            vector<int>& vec = p.second;
+            for (int i = 0; i + 1 < vec.size(); i++) {
+                dsu.unite(vec[i], vec[i + 1]);
+            }
+        }
+
+        // compute maximum component size
+        int maxi = 0;
+        for (int x : nums) {
+            int root = dsu.find_parent(x);
+            maxi = max(maxi, dsu.size[root]);
+        }
+
+        return maxi;
+    }
+
+    void compute_div(int n) {
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                mp[i].push_back(n);
+                if (i != n / i)
+                    mp[n / i].push_back(n);
+            }
+        }
+        mp[n].push_back(n);
+    }
+};
 ```
 
 </template>

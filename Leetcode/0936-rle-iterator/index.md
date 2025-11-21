@@ -100,7 +100,46 @@ class RLEIterator {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class RLEIterator {
+private:
+    struct Pair {
+        long long count;
+        int node;
+        Pair(long long c, int n) : count(c), node(n) {}
+    };
+
+    deque<Pair> dq;
+
+public:
+    RLEIterator(vector<int>& encoding) {
+        int n = encoding.size();
+        for (int i = 0; i < n; i += 2) {
+            long long count = encoding[i];
+            int node = encoding[i + 1];
+            dq.emplace_back(count, node);
+        }
+    }
+
+    int next(int n) {
+        long long req = n;
+        int last = -1;
+        while (!dq.empty() && req > 0) {
+            Pair current = dq.front();
+            dq.pop_front();
+            if (current.count > req) {
+                current.count -= req;
+                dq.push_front(current);
+                req = 0;
+            } else {
+                req -= current.count;
+            }
+            last = current.node;
+        }
+        if (req > 0) return -1;
+        return last;
+    }
+};
+
 ```
 
 </template>

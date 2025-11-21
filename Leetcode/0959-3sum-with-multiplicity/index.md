@@ -168,7 +168,127 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    static const int mod = 1000000007;
+    static long long factorials[5000];
+    static long long invFactorials[5000];
+
+    struct Tuple {
+        int first, second, third;
+        Tuple(int a, int b, int c) : first(a), second(b), third(c) {}
+
+        bool operator==(Tuple const& other) const {
+            return first == other.first &&
+                   second == other.second &&
+                   third == other.third;
+        }
+    };
+
+    struct TupleHash {
+        size_t operator()(Tuple const& t) const noexcept {
+            long long h1 = std::hash<int>()(t.first);
+            long long h2 = std::hash<int>()(t.second);
+            long long h3 = std::hash<int>()(t.third);
+            return h1 ^ (h2 << 1) ^ (h3 << 2);
+        }
+    };
+
+    static void precompFacts() {
+        factorials[0] = invFactorials[0] = 1;
+        for (int i = 1; i < 5000; i++)
+            factorials[i] = mul(factorials[i - 1], i);
+
+        invFactorials[4999] = exp(factorials[4999], mod - 2);
+
+        for (int i = 4998; i >= 0; i--)
+            invFactorials[i] = mul(invFactorials[i + 1], i + 1);
+    }
+
+    static long long nCk(int n, int k) {
+        return mul(factorials[n], mul(invFactorials[k], invFactorials[n - k]));
+    }
+
+    int threeSumMulti(vector<int>& arr, int target) {
+        precompFacts();
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+
+        unordered_map<int, int> freq;
+        for (int x : arr)
+            freq[x]++;
+
+        unordered_set<Tuple, TupleHash> result;
+
+        for (int i = 0; i < n; i++) {
+            int req = target - arr[i];
+            int low = i + 1, high = n - 1;
+
+            while (low < high) {
+                int sum = arr[low] + arr[high];
+                if (sum == req) {
+                    result.insert(Tuple(arr[i], arr[low], arr[high]));
+                    low++;
+                    high--;
+                } else if (sum < req)
+                    low++;
+                else
+                    high--;
+            }
+        }
+
+        long long count = 0;
+
+        for (auto const& t : result) {
+            int a = t.first, b = t.second, c = t.third;
+
+            if (a == b && b == c) {
+                count = add(count, nCk(freq[a], 3));
+            }
+            else if (a == b && b != c) {
+                long long cur = mul(nCk(freq[a], 2), freq[c]);
+                count = add(count, cur);
+            }
+            else if (b == c) {
+                long long cur = mul(freq[a], nCk(freq[b], 2));
+                count = add(count, cur);
+            }
+            else {
+                long long cur = mul(freq[a], mul(freq[b], freq[c]));
+                count = add(count, cur);
+            }
+        }
+
+        return (int)count;
+    }
+
+private:
+    static long long exp(long long base, long long e) {
+        if (e == 0)
+            return 1;
+        long long half = exp(base, e / 2);
+        long long res = mul(half, half);
+        if (e & 1)
+            res = mul(res, base);
+        return res;
+    }
+
+    static long long mul(long long a, long long b) {
+        return (a % mod) * (b % mod) % mod;
+    }
+
+    static long long add(long long a, long long b) {
+        a += b;
+        if (a >= mod)
+            a -= mod;
+        return a;
+    }
+};
+
+// Static array definitions
+long long Solution::factorials[5000];
+long long Solution::invFactorials[5000];
+
 ```
 
 </template>

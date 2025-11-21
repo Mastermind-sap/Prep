@@ -79,7 +79,23 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    bool flipEquiv(TreeNode* root1, TreeNode* root2) {
+        if (!root1 && !root2)
+            return true;
+        if (!root1 || !root2 || root1->val != root2->val)
+            return false;
+
+        bool current = flipEquiv(root1->left, root2->left) &&
+                       flipEquiv(root1->right, root2->right);
+
+        bool flipped = flipEquiv(root1->left, root2->right) &&
+                       flipEquiv(root1->right, root2->left);
+
+        return current || flipped;
+    }
+};
 ```
 
 </template>
