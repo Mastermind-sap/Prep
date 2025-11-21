@@ -4,8 +4,6 @@
 
 </div>
 
-# 📚 Computer Science Study Resources
-
 <p align="center">
   <a href="https://raj8664.github.io/Prep"><img src="https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen" alt="GitHub Pages"></a>
   <a href="contribution.md"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="Contributions Welcome"></a>
