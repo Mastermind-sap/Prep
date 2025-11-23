@@ -2444,7 +2444,7 @@
     "difficulty": "medium"
   },
   "627": {
-    "slug": "swap-salary",
+    "slug": "swap-sex-of-employees",
     "difficulty": "easy"
   },
   "628": {
@@ -14539,6 +14539,10 @@
     "slug": "minimum-sensors-to-cover-grid",
     "difficulty": "medium"
   },
+  "3946": {
+    "slug": "find-maximum-balanced-xor-subarray-length",
+    "difficulty": "medium"
+  },
   "3947": {
     "slug": "balanced-k-factor-decomposition",
     "difficulty": "medium"
@@ -14663,6 +14667,10 @@
     "slug": "minimum-operations-to-equalize-binary-string",
     "difficulty": "hard"
   },
+  "3986": {
+    "slug": "maximum-path-score-in-a-grid",
+    "difficulty": "medium"
+  },
   "3987": {
     "slug": "maximum-weight-in-two-bags",
     "difficulty": "medium"
@@ -14783,6 +14791,10 @@
     "slug": "sort-array-by-absolute-value",
     "difficulty": "easy"
   },
+  "4030": {
+    "slug": "maximize-cyclic-partition-score",
+    "difficulty": "hard"
+  },
   "4033": {
     "slug": "longest-subsequence-with-non-zero-bitwise-xor",
     "difficulty": "medium"
@@ -14847,12 +14859,20 @@
     "slug": "majority-frequency-characters",
     "difficulty": "easy"
   },
+  "4054": {
+    "slug": "count-distinct-integers-after-removing-zeros",
+    "difficulty": "medium"
+  },
   "4055": {
     "slug": "longest-balanced-substring-i",
     "difficulty": "medium"
   },
   "4056": {
     "slug": "longest-balanced-substring-ii",
+    "difficulty": "medium"
+  },
+  "4057": {
+    "slug": "total-waviness-of-numbers-in-range-i",
     "difficulty": "medium"
   },
   "4058": {
@@ -14891,6 +14911,18 @@
     "slug": "lexicographically-smallest-string-after-reverse",
     "difficulty": "medium"
   },
+  "4074": {
+    "slug": "count-subarrays-with-majority-element-i",
+    "difficulty": "medium"
+  },
+  "4075": {
+    "slug": "count-subarrays-with-majority-element-ii",
+    "difficulty": "hard"
+  },
+  "4077": {
+    "slug": "lexicographically-smallest-negated-permutation-that-sums-to-target",
+    "difficulty": "medium"
+  },
   "4078": {
     "slug": "maximum-alternating-sum-of-squares",
     "difficulty": "medium"
@@ -14911,8 +14943,16 @@
     "slug": "maximize-sum-of-squares-of-digits",
     "difficulty": "medium"
   },
+  "4090": {
+    "slug": "minimum-string-length-after-balanced-removals",
+    "difficulty": "medium"
+  },
   "4091": {
     "slug": "find-golden-hour-customers",
+    "difficulty": "medium"
+  },
+  "4098": {
+    "slug": "longest-non-decreasing-subarray-after-replacing-at-most-one-element",
     "difficulty": "medium"
   },
   "4101": {
@@ -14938,5 +14978,53 @@
   "4109": {
     "slug": "maximum-calories-burnt-from-jumps",
     "difficulty": "medium"
+  },
+  "4110": {
+    "slug": "count-stable-subarrays",
+    "difficulty": "hard"
+  },
+  "4112": {
+    "slug": "maximize-expression-of-three-elements",
+    "difficulty": "easy"
+  },
+  "4113": {
+    "slug": "find-kth-character-in-expanded-string",
+    "difficulty": "medium"
+  },
+  "4115": {
+    "slug": "minimum-distance-between-three-equal-elements-i",
+    "difficulty": "easy"
+  },
+  "4116": {
+    "slug": "minimum-moves-to-equal-array-elements-iii",
+    "difficulty": "easy"
+  },
+  "4119": {
+    "slug": "minimum-distance-between-three-equal-elements-ii",
+    "difficulty": "medium"
+  },
+  "4126": {
+    "slug": "minimum-number-of-flips-to-reverse-binary-string",
+    "difficulty": "easy"
+  },
+  "4128": {
+    "slug": "total-waviness-of-numbers-in-range-ii",
+    "difficulty": "hard"
+  },
+  "4134": {
+    "slug": "number-of-effective-subsequences",
+    "difficulty": "hard"
+  },
+  "4135": {
+    "slug": "concatenate-non-zero-digits-and-multiply-by-sum-i",
+    "difficulty": "easy"
+  },
+  "4136": {
+    "slug": "concatenate-non-zero-digits-and-multiply-by-sum-ii",
+    "difficulty": "medium"
+  },
+  "4140": {
+    "slug": "evaluate-valid-expressions",
+    "difficulty": "hard"
   }
 }
