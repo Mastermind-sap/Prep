@@ -75,7 +75,28 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <string>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
+        int n = matrix.size(), m = matrix[0].size();
+        unordered_map<string, int> map;
+        int res = 0;
+        for (auto& row : matrix) {
+            string s;
+            s.reserve(m);
+            for (int ele : row)
+                s.push_back( char((ele ^ row[0]) + '0') );
+            map[s]++;
+            res = max(res, map[s]);
+        }
+        return res;
+    }
+};
 ```
 
 </template>

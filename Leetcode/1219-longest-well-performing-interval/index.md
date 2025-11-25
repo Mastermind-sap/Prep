@@ -70,7 +70,31 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    int longestWPI(vector<int>& hours) {
+        int n = hours.size();
+        unordered_map<int, int> map;
+        int sum = 0, ans = 0;
+        for (int i = 0; i < n; i++) {
+            if (hours[i] <= 8)
+                sum += -1;
+            else
+                sum += 1;
+            if (sum > 0)
+                ans = i + 1;
+            else if (map.find(sum - 1) != map.end())
+                ans = max(ans, i - map[sum - 1]);
+            if (map.find(sum) == map.end())
+                map[sum] = i;
+        }
+        return ans;
+    }
+};
 ```
 
 </template>

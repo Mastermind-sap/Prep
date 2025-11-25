@@ -84,7 +84,45 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ * };
+ */
+
+class Solution {
+public:
+    TreeNode* recoverFromPreorder(string S) {
+        int n = S.length();
+        unordered_map<int, TreeNode*> mp;
+        int i = 0;
+        while (i < n) {
+            int curLevel = 0, num = 0;
+            while (i < n && S[i] == '-') {
+                curLevel++;
+                i++;
+            }
+            while (i < n && isdigit(S[i])) {
+                num = num * 10 + (S[i] - '0');
+                i++;
+            }
+            TreeNode* current = new TreeNode(num);
+            mp[curLevel] = current;
+            if (curLevel > 0) {
+                TreeNode* parent = mp[curLevel - 1];
+                if (parent->left == nullptr)
+                    parent->left = current;
+                else
+                    parent->right = current;
+            }
+        }
+        return mp[0];
+    }
+};
 ```
 
 </template>

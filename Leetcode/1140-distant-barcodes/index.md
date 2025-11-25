@@ -85,7 +85,53 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <queue>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int node, freq, used;
+        Pair(int n, int f, int u) : node(n), freq(f), used(u) {}
+    };
+
+    struct custom_sort {
+        bool operator()(const Pair& a, const Pair& b) const {
+            return a.freq < b.freq;  // max-heap by freq (descending)
+        }
+    };
+
+    vector<int> rearrangeBarcodes(vector<int>& barcodes) {
+        int n = barcodes.size();
+
+        priority_queue<Pair, vector<Pair>, custom_sort> pq;
+        priority_queue<Pair, vector<Pair>, custom_sort> pq1;
+        unordered_map<int, int> map;
+        for (int ele : barcodes)
+            map[ele]++;
+        for (auto &curr : map) {
+            int key = curr.first;
+            int val = curr.second;
+            pq.push(Pair(key, val, 0));
+        }
+        vector<int> res(n);
+        int k = 0;
+        while (!pq.empty()) {
+            int key = pq.top().node;
+            int freq = pq.top().freq;
+            int used = pq.top().used;
+            pq.pop();
+            res[k++] = key;
+            if (!pq1.empty())
+                pq.push(pq1.top()), pq1.pop();
+            if (freq - 1 > 0)
+                pq1.push(Pair(key, freq - 1, 1));
+        }
+        return res;
+    }
+};
 ```
 
 </template>

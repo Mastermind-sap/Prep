@@ -72,7 +72,32 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    int numTilePossibilities(string tiles) {
+        vector<int> freq(26, 0);
+        for (char c : tiles)
+            freq[c - 'A']++;
+        return solve(freq);
+    }
+
+private:
+    int solve(vector<int>& freq) {
+        int count = 0;
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] > 0) {
+                freq[i]--;
+                count += 1 + solve(freq);
+                freq[i]++;
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>

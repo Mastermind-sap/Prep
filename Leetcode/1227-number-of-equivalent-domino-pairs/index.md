@@ -93,7 +93,56 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <unordered_map>
+#include <functional>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int first, second;
+        Pair(int f = 0, int s = 0) : first(f), second(s) {}
+
+        bool operator==(const Pair& other) const {
+            return first == other.first && second == other.second;
+        }
+    };
+
+    struct PairHash {
+        size_t operator()(Pair const& p) const noexcept {
+            return hash<int>()(p.first) ^ (hash<int>()(p.second) << 1);
+        }
+    };
+
+    int numEquivDominoPairs(vector<vector<int>>& arr) {
+        int n = arr.size();
+        unordered_map<Pair, int, PairHash> map;
+        for (int i = 0; i < n; i++) {
+            Pair p(arr[i][0], arr[i][1]);
+            map[p] = (map.count(p) ? map[p] : 0) + 1;
+        }
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            int x = arr[i][0], y = arr[i][1];
+            Pair p1(x, y);
+            Pair p2(y, x);
+            if (x == y) {
+                count += (map.count(p1) ? map[p1] : 0) - 1;
+                if (map.count(p1) && map[p1] > 0)
+                    map[p1] = map[p1] - 1;
+            }
+            else {
+                count += (map.count(p1) ? map[p1] : 0) - 1;
+                count += (map.count(p2) ? map[p2] : 0);
+
+                if (map.count(p1) && map[p1] > 0)
+                    map[p1] = map[p1] - 1;
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>

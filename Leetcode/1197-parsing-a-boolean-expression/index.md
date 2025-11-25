@@ -125,7 +125,59 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <stack>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    bool parseBoolExpr(string s) {
+        int n = s.size();
+        stack<char> first;
+        stack<char> second;
+        for (int i = 0; i < n; i++) {
+            char current = s[i];
+            if (current == ',')
+                continue;
+            if (current == '&' || current == '|' || current == '!')
+                second.push(current);
+            else {
+                if (current == ')') {
+                    char todo = second.top();
+                    second.pop();
+                    if (todo == '&') {
+                        bool flag = true;
+                        while (!first.empty() && first.top() != '(') {
+                            char ch = first.top(); first.pop();
+                            if (ch == 'f')
+                                flag = false;
+                        }
+                        first.pop(); // remove '('
+                        first.push(flag ? 't' : 'f');
+                    }
+                    else if (todo == '|') {
+                        bool flag = false;
+                        while (!first.empty() && first.top() != '(') {
+                            char ch = first.top(); first.pop();
+                            if (ch == 't')
+                                flag = true;
+                        }
+                        first.pop(); // remove '('
+                        first.push(flag ? 't' : 'f');
+                    }
+                    else if (todo == '!') {
+                        char ch = first.top(); first.pop();
+                        first.pop(); // remove '('
+                        first.push(ch == 't' ? 'f' : 't');
+                    }
+                } else {
+                    first.push(current);
+                }
+            }
+        }
+        return first.top() == 't';
+    }
+};
 ```
 
 </template>

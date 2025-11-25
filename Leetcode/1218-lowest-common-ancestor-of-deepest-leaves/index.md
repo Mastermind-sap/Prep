@@ -198,7 +198,145 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right)
+ *         : val(x), left(left), right(right) {}
+ * };
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        TreeNode* node;
+        int depth;
+        Pair(TreeNode* n, int d) : node(n), depth(d) {}
+    };
+
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        int depth[1006] = {0};
+        vector<vector<int>> adj(1006);
+        queue<Pair> q;
+        q.push(Pair(root, 0));
+        while (!q.empty()) {
+            int len = q.size();
+            for (int i = 0; i < len; i++) {
+                TreeNode* curNode = q.front().node;
+                int d = q.front().depth;
+                if (curNode->left != nullptr) {
+                    q.push(Pair(curNode->left, d + 1));
+                    int u = curNode->val;
+                    int v = curNode->left->val;
+                    adj[u].push_back(v);
+                    adj[v].push_back(u);
+                }
+                if (curNode->right != nullptr) {
+                    q.push(Pair(curNode->right, d + 1));
+                    int u = curNode->val;
+                    int v = curNode->right->val;
+                    adj[u].push_back(v);
+                    adj[v].push_back(u);
+                }
+                depth[curNode->val] = d;
+                q.pop();
+            }
+        }
+        int maxi = 0;
+        for (int i = 0; i <= 1000; i++)
+            maxi = max(maxi, depth[i]);
+        vector<int> deepest_node;
+        for (int i = 0; i <= 1000; i++) {
+            if (depth[i] == maxi) {
+                deepest_node.push_back(i);
+            }
+        }
+        int dp[1006][18];
+        memset(dp, 0, sizeof(dp));
+
+        dfs(root->val, 0, adj, dp);
+
+        int ans = deepest_node[0];
+        int minDepth = INT_MAX;
+        for (int i = 0; i < (int)deepest_node.size(); i++) {
+            for (int j = i + 1; j < (int)deepest_node.size(); j++) {
+                int a = deepest_node[i];
+                int b = deepest_node[j];
+                int L = lca(a, b, dp, depth);
+                if (depth[L] < minDepth) {
+                    minDepth = depth[L];
+                    ans = L;
+                }
+            }
+        }
+        if (root->left == nullptr && root->right == nullptr)
+            return root;
+        return findNode(root, ans);
+    }
+
+    TreeNode* findNode(TreeNode* root, int res) {
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            int len = q.size();
+            for (int i = 0; i < len; i++) {
+                TreeNode* cur = q.front(); q.pop();
+                if (cur->val == res)
+                    return cur;
+                if (cur->left != nullptr)
+                    q.push(cur->left);
+                if (cur->right != nullptr)
+                    q.push(cur->right);
+            }
+        }
+        return nullptr;
+    }
+
+    void dfs(int u, int par, vector<vector<int>>& adj, int dp[][18]) {
+        dp[u][0] = par;
+        for (int i = 1; i <= 17; i++)
+            dp[u][i] = dp[dp[u][i - 1]][i - 1];
+        for (int v : adj[u]) {
+            if (v != par)
+                dfs(v, u, adj, dp);
+        }
+    }
+
+    int lca(int a, int b, int dp[][18], int depth[]) {
+        if (depth[a] > depth[b])
+            swap(a, b);
+        int diff = depth[b] - depth[a];
+        b = find_kth_parent(b, diff, dp);
+        if (a == b)
+            return a;
+        for (int i = 17; i >= 0; i--) {
+            if (dp[a][i] != dp[b][i]) {
+                a = dp[a][i];
+                b = dp[b][i];
+            }
+        }
+        return dp[a][0];
+    }
+
+    int find_kth_parent(int u, int k, int dp[][18]) {
+        int count = 0;
+        while (k != 0) {
+            if (k & 1)
+                u = dp[u][count];
+            count++;
+            k >>= 1;
+        }
+        return u;
+    }
+};
 ```
 
 </template>

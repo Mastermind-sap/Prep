@@ -68,7 +68,40 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <string>
+#include <stack>
+using namespace std;
+
+class Solution {
+public:
+    string smallestSubsequence(string s) {
+        int n = s.size();
+        vector<int> lastIndex(26);
+        for (int i = 0; i < n; i++)
+            lastIndex[s[i] - 'a'] = i;
+        vector<bool> seen(26, false);
+        stack<int> st;
+        for (int i = 0; i < n; i++) {
+            int currentChar = s[i] - 'a';
+            if (seen[currentChar])
+                continue;
+            while (!st.empty() && st.top() > currentChar && i < lastIndex[st.top()]) {
+                seen[st.top()] = false;
+                st.pop();
+            }
+            st.push(currentChar);
+            seen[currentChar] = true;
+        }
+        string result = "";
+        while (!st.empty()) {
+            result.push_back(char(st.top() + 'a'));
+            st.pop();
+        }
+        reverse(result.begin(), result.end());
+        return result;
+    }
+};
 ```
 
 </template>

@@ -93,7 +93,39 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<vector<int>>> dp;
+
+    int twoCitySchedCost(vector<vector<int>>& costs) {
+        int n = costs.size();
+        dp = vector<vector<vector<int>>>(
+            n + 1,
+            vector<vector<int>>(n / 2 + 1, vector<int>(n / 2 + 1, -1))
+        );
+        return solve(0, n / 2, n / 2, costs);
+    }
+
+    int solve(int ind, int aCount, int bCount, vector<vector<int>>& cost) {
+        if (ind >= cost.size()) {
+            if (aCount > 0 || bCount > 0)
+                return 1000000000;
+            return 0;
+        }
+        if (dp[ind][aCount][bCount] != -1)
+            return dp[ind][aCount][bCount];
+        int op1 = 1000000000, op2 = 1000000000;
+        if (aCount > 0)
+            op1 = cost[ind][0] + solve(ind + 1, aCount - 1, bCount, cost);
+        if (bCount > 0)
+            op2 = cost[ind][1] + solve(ind + 1, aCount, bCount - 1, cost);
+        return dp[ind][aCount][bCount] = min(op1, op2);
+    }
+};
 ```
 
 </template>

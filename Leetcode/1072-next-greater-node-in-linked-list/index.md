@@ -81,7 +81,41 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+        vector<int> nodes;
+        ListNode* current = head;
+        while (current != nullptr) {
+            nodes.push_back(current->val);
+            current = current->next;
+        }
+        int n = nodes.size();
+        vector<int> res(n, 0);
+        stack<int> st;
+        for (int i = n - 1; i >= 0; --i) {
+            int curr = nodes[i];
+            while (!st.empty() && st.top() <= curr)
+                st.pop();
+            if (!st.empty())
+                res[i] = st.top();
+            else
+                res[i] = 0;
+            st.push(curr);
+        }
+        return res;
+    }
+};
 ```
 
 </template>

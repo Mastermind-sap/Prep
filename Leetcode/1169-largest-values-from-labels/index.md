@@ -115,7 +115,45 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int first, second;
+        Pair(int f, int s) : first(f), second(s) {}
+    };
+
+    struct custom_sort {
+        bool operator()(const Pair& a, const Pair& b) const {
+            return a.first < b.first ? false : a.first > b.first;
+        }
+    };
+
+    int largestValsFromLabels(vector<int>& values, vector<int>& labels, int numWanted, int useLimit) {
+        int n = values.size();
+        vector<Pair> res;
+        res.reserve(n);
+        for (int i = 0; i < n; i++)
+            res.emplace_back(values[i], labels[i]);
+        sort(res.begin(), res.end(), custom_sort());
+        int sum = 0, count = 0;
+        vector<int> freq(100000 + 1, 0);
+        for (int i = 0; i < n; i++) {
+            if (count == numWanted)
+                break;
+            Pair current = res[i];
+            if (freq[current.second] == useLimit)
+                continue;
+            sum += current.first;
+            count++;
+            freq[current.second]++;
+        }
+        return sum;
+    }
+};
 ```
 
 </template>
