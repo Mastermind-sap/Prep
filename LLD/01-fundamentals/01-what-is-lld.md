@@ -32,10 +32,10 @@ graph TD
 - **Scope**: Overall system structure
 - **Audience**: Architects, stakeholders, project managers
 - **Examples**:
-    - Microservices architecture
-    - Database selection
-    - Technology stack decisions
-    - System integration points
+  - Microservices architecture
+  - Database selection
+  - Technology stack decisions
+  - System integration points
 
 > ### Low-Level Design (LLD)
 
@@ -43,10 +43,10 @@ graph TD
 - **Scope**: Classes, methods, and their relationships
 - **Audience**: Developers, implementers
 - **Examples**:
-    - Class diagrams with methods and attributes
-    - Sequence diagrams for interactions
-    - Design patterns implementation
-    - Data structures and algorithms
+  - Class diagrams with methods and attributes
+  - Sequence diagrams for interactions
+  - Design patterns implementation
+  - Data structures and algorithms
 
 ## 🎨 Key Components of LLD (read oop first, you will find it in the same repo)
 
@@ -368,8 +368,8 @@ flowchart TD
     F --> G[Review and Validate]
     G --> H[Implementation Ready]
 
-    style A fill:#e1f5fe
-    style H fill:#c8e6c9
+    style A fill:#1e40af,stroke:#3b82f6,color:#fff
+    style H fill:#15803d,stroke:#22c55e,color:#fff
 ```
 
 </div>
