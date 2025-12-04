@@ -240,7 +240,7 @@ flowchart LR
 - Shows how objects interact over time.
 - A sequence diagram is a type of UML (Unified Modeling Language) diagram that shows how objects in a system interact with each other, step by step.
 - It focuses on the order of messages exchanged between different components or actors to achieve a particular task or use case.
-- **"Who is doing what and when"**
+- **"Who is doing what and when?"**
 - A **Sequence Diagram** in UML is used to represent the flow of messages between different objects or components over time.
 - It shows **how objects interact** through different types of **messages**.
 
