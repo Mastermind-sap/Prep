@@ -14775,6 +14775,10 @@
     "slug": "distinct-points-reachable-after-substring-removal",
     "difficulty": "medium"
   },
+  "4022": {
+    "slug": "minimum-operations-to-equalize-subarrays",
+    "difficulty": "hard"
+  },
   "4023": {
     "slug": "count-binary-palindromic-numbers",
     "difficulty": "hard"
@@ -14943,6 +14947,10 @@
     "slug": "maximize-sum-of-squares-of-digits",
     "difficulty": "medium"
   },
+  "4087": {
+    "slug": "maximum-substrings-with-distinct-start",
+    "difficulty": "medium"
+  },
   "4090": {
     "slug": "minimum-string-length-after-balanced-removals",
     "difficulty": "medium"
@@ -15023,8 +15031,28 @@
     "slug": "concatenate-non-zero-digits-and-multiply-by-sum-ii",
     "difficulty": "medium"
   },
+  "4139": {
+    "slug": "minimum-absolute-distance-between-mirror-pairs",
+    "difficulty": "medium"
+  },
   "4140": {
     "slug": "evaluate-valid-expressions",
+    "difficulty": "hard"
+  },
+  "4141": {
+    "slug": "count-elements-with-at-least-k-greater-values",
+    "difficulty": "medium"
+  },
+  "4148": {
+    "slug": "convert-number-words-to-digits",
+    "difficulty": "medium"
+  },
+  "4166": {
+    "slug": "maximum-total-sum-with-threshold-constraints",
+    "difficulty": "medium"
+  },
+  "4169": {
+    "slug": "most-common-course-pairs",
     "difficulty": "hard"
   }
 }
