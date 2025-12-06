@@ -9,40 +9,40 @@ features:
     - icon: 🎯
       title: SEM 1
       details: What really makes the current flow? We’re not totally sure yet, but we’ve seen enough sparks to know we’re getting closer.
-      link: /Syllabus/SEM1/
+      link: /branch/electrical/SEM1/
 
     - icon: 🏗️
       title: SEM 2
       details: We connected some wires, flipped a switch, and nothing happened. Still trying to figure out where the power went.
-      link: /Syllabu/SEM2/
+      link: /branch/electrical/SEM2/
 
     - icon: 💻
       title: SEM 3
       details: Ohm’s Law makes sense, until the readings don’t. We’re learning that resistance applies to both current and students.
-      link: /Syllabus/SEM3/
+      link: /branch/electrical/SEM3/
 
     - icon: 🗄️
       title: SEM 4
       details: Machines are supposed to rotate smoothly, but ours just screamed. Still pretending we understand torque.
-      link: /Syllabus/SEM4/
+      link: /branch/electrical/SEM4/
 
     - icon: 🌐
       title: SEM 5
       details: Power Systems sound powerful, until you realize it’s mostly endless line diagrams and short circuits.
-      link: /Syllabus/SEM5/
+      link: /branch/electrical/SEM5/
 
     - icon: ☕
       title: SEM 6
       details: Control Systems teach stability(ironic), since we have none. Still figuring out how feedback actually works.
-      link: /Syllabus/SEM6/
+      link: /branch/electrical/SEM6/
 
     - icon: ⚡
       title: SEM 7
       details: Protection Systems keep machines safe -> now if only they could protect our grades too.
-      link: /Syllabus/SEM7/
+      link: /branch/electrical/SEM7/
 
     - icon: 📊
       title: SEM 8
       details: After years of circuits, machines, and math, we finally know how power flows, and it feels electric.
-      link: /Syllabus/SEM8/
+      link: /branch/electrical/SEM8/
 ---
