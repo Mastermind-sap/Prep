@@ -44,7 +44,12 @@
   { name: 'lec 15', fileId: '1tIoKJEpFMx-5w90uwboIASO6aPBjtAo3', type: 'pdf' },
   { name: 'lec 16', fileId: '1CjPTy8E2Mj5vxFMbBEeN19vUuwYBPRe0', type: 'pdf' },
   { name: 'lec 17', fileId: '1mtT7ZKdfkvR1dM83mR80LUta9MT1lVYX', type: 'pdf' },
-  { name: 'lec 18', fileId: '1cyz7_XuTeQ4Jr4hZc_urUk6jRyeeQ9Ex', type: 'pdf' }
+  { name: 'lec 18', fileId: '1cyz7_XuTeQ4Jr4hZc_urUk6jRyeeQ9Ex', type: 'pdf' },
+  { name: 'Abraham-Silberschatz-Operating-System-Concepts', fileId: '1IVvj_1_Nqe16L9skM1QB3PHVCro7tGON', type: 'pdf' },
+  { name: 'Operating System Concepts Solution Galvin', fileId: '1t4NYf423v7pMbZ92qVwIzsCzK6DZ5iOM', type: 'pdf' },
+  { name: 'Operating System Class Notes Samir Sir 2025 Part 2', fileId: '1XX2cnNpJRLP4Ufu8LVjd0BVRkSdwrio-', type: 'pdf' },
+  { name: 'Operating System Class Notes Samir Sir 2025 Part 1', fileId: '1yJt4RZGXQG0meHAE4xZYaioCP7P6Cqyf', type: 'pdf' },
+  { name: 'OS Tutorial', fileId: '1n2v7CfGLe-3TDgufN5u2fxk-E3o8Qf8B', type: 'pdf'}
 ]" />
 
 

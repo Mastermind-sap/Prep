@@ -50,7 +50,20 @@
   { name: 'Lec 22', fileId: '1iw_BOxRue1FlOPhg0TBwm_BeNpUkHAxi', type: 'pdf' },
   { name: 'Lec 23', fileId: '1LVWaMhf4xsVSmq-WjXEzKNAngPiugTxm', type: 'pdf' },
   { name: 'Lec 24', fileId: '1X-nak6Iz6kv4IqNfJS31-mWwtn-8B0S7', type: 'pdf' },
-  { name: 'Lec 25', fileId: '11omlWYk30Ko7T_GOaBws2AVssL6rhFiw', type: 'pdf' }
+  { name: 'Lec 25', fileId: '11omlWYk30Ko7T_GOaBws2AVssL6rhFiw', type: 'pdf' },
+  { name: 'Chapter 1 Introduction', fileId: '1n32BCV4yKXyXUAeD7v5GR-d23HfFJO6H', type: 'pdf'},
+  { name: 'Chapter 2 Software Development Lifecycle Model', fileId: '1wg6GX17f2kkJA0dYTguCIOGuosRNNk_z', type: 'pdf'},
+  { name: 'Chapter 3 Software Requirements', fileId: '15p3Q_tt-_dYR-h7JvfHPEXCJtawCMsIa', type: 'pdf'},
+  { name: 'Chapter 4 Software Project Planning', fileId: '197ILu96x4gfXYDKWUTlzdwYCoAsA1AVQ', type: 'pdf'},
+  { name: 'Tutorial 01', fileId: '13IJjjAFA61-gnxKrETGgFbWu0y5Ni154', type: 'pdf'},
+  { name: 'Tutorial 02', fileId: '14POk9Nhe1VZjcQVvFIQ83woO2W1Tog_m', type: 'pdf'},
+  { name: 'SRS Template IEEE', fileId: '1oEeqKB7WHxqAEZO18I4Fbd4zJj2EdPPc', type: 'pdf'},
+  { name: 'SE_PostMid Complete', fileId: '1fbe98051nHcYBhzT75YbY-peiQiuYYDb', type: 'pdf'},
+  { name: 'Software Design', fileId: '1pBSuyRTup7rjw4dEjiDT2TiZSHBErecS', type: 'pdf'},
+  { name: 'Software Testing', fileId: '1pxlq32E27EJ6QfB84m6eFbNeYd2JQLNX', type: 'pdf'},
+  { name: 'Software Maintenance', fileId: '1o424N-Fe59Xrgu0CA_e1Fuk1Uq3ZXsO0', type: 'pdf'},
+  { name: 'Software Certification', fileId: '1sN5jHK2aGG_TvHclYOv8X15mmqx0BOlk', type: 'pdf'},
+  { name: 'Risk', fileId: '10K4LSQgWtd8t2AsiWwQgwtL_6kjqNL7Z', type: 'pdf'}
 ]" />
 
 
