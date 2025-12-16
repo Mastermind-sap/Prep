@@ -79,6 +79,14 @@
   { name: 'Lec 24', fileId: '1JUfu13kuBRFr-8nbqkU0PIEXUWu_I8SK' },
   { name: 'Lec 25', fileId: '1UU8HIFwDGggjmg6DQ4DcRS4VvhUV3f24' },
   { name: 'Lec 26', fileId: '1-Wu3DEqwr6xULKl33tG77Mr1KT8MtyDX' },
+  { name: 'Transport Layer Chukhu Maam 2025', fileId: '1iVimNTy_s8Lu-jgGwuvb8NdA6qXQgPPV'},
+  { name: 'Chapter_1_6 Bandwidth Utilization FDM_TDM_WDM', fileId: '130pD5FQBTtGq6htiqvmO3cR5VChFC_UU'},
+  { name: 'Chapter_6_Application Layer chukhu chunka', fileId: '1argIZADcHIEwL2HWezGkO4uqym02J1kN' },
+  { name: 'Chukhu Maam Handwritten', fileId: '1spFVLLq0d5dybuN7-EUYwFObjLUBeV0z' },
+  { name: 'Chukhu Maam Class Notes 2025', fileId: '12DuLL8na8thtg7_9O_O5a_IKt04nDEAM' },
+  { name: 'Computer Network PPT Anupam Sir', fileId: '1MfYVqRXHbqxEBSRHtUSwAwzzaEfe1m97' },
+  { name: 'Computer Network Class Questions', fileId: '1PKnggVgOZFTa4lbewUZ4wsgtexCBrqw-'},
+  { name: 'CN Class Notes Chukhu Chunka Maam 2025', fileId: '1Rjyqsv9pNTYrf74SfXaRMOzF1mAzq7bA'}
 ]" />
 
 </div>
