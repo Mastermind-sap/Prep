@@ -60,6 +60,22 @@ Database Management Systems (CS302) covers data modeling (ER/EER), the relationa
   { name: 'Lec 23', fileId: '1H5RXrj0YjR9W3-aGvb2ikMSXFf6isaTY', type: 'pdf' },
   { name: 'Lec 24', fileId: '1WGMgPu9u9vtRlYxzKMu0Xei_7uL-HlCa', type: 'pdf' },
   { name: 'Lec 25', fileId: '1NOOl1YxpY_1CNWwKXRVsEGTHGXPvbbPn', type: 'pdf' },
+  { name: 'Chapter 01', fileId: '19CbN6y2KrHc3cBXdhg1fCCUeIkDekrbx', type: 'pdf'},
+  { name: 'Chapter 02', fileId: '1ScRVoM4Z44efSrMNdjCj7-0ymIBQ74sl', type: 'pdf'},
+  { name: 'Chapter 03', fileId: '1spdp-PjZD-RConAxu9OczeJSxccTpWR7', type: 'pdf'},
+  { name: 'Chapter 04', fileId: '1QoBjYAbCHxFUQC3W_a2woCPMMP4O-Q4v', type: 'pdf'},
+  { name: 'Chapter 05', fileId: '17W-KBO4Vjzt8KcyQsd1fnow3lXzEl0-W', type: 'pdf'},
+  { name: 'Chapter 06', fileId: '1fk8ophEVoqdPb25y0dT3KEfiF1X86rUI', type: 'pdf'},
+  { name: 'Chapter 07 SQL', fileId: '1vj4izGzIDVNLH3_lkQBUG-6Vn1kxEkv7', type: 'pdf'},
+  { name: 'Chapter 08', fileId: '1u-kBmd8zdPbBI46CP4LDuNFABgFsO0pz', type: 'pdf'},
+  { name: 'Chapter 09', fileId: '13GeRHZ4CzgF5SjeorI9iWYDlS43zPfTJ', type: 'pdf'},
+  { name: 'Chapter 10', fileId: '1PCrXOH5kC8ZJWBVWRqmKSc6h6JB0-4jg', type: 'pdf'},
+  { name: 'Assignment 1-Questions', fileId: '12G24BElr9rJQAOwTvXaHs-i15vEM8eKC', type: 'pdf'},
+  { name: 'Assignment 1-Model Sol', fileId: '15K-WkqoIw9wnTZSnduv0rWuStXEQVUlN', type: 'pdf'},
+  { name: 'Assignment 2-Questions', fileId: '1Z9pJMokkfvMisSJ7IFUIeP0ulHaOhefy', type: 'pdf'},
+  { name: 'Assignment 2-Model Sol', fileId: '1odJQmYQWXXyEIhGrkYLg46XlUny8B1x2', type: 'pdf'},
+  { name: 'Tutorial Assignment 3', fileId: '1_WyGXXr0x3GIArefJe5sxCIJbbVIyixW', type: 'pdf'},
+  { name: 'Tutorial Assignment 3-Model Sol', fileId: '1edSHjckI3bODpw7IXhSb8tc3wemP6XJZ', type: 'pdf'}
 ]" />
 
 
