@@ -8,6 +8,14 @@
   <img src="https://img.shields.io/github/commit-activity/m/RAJ8664/Prep" alt="GitHub commit activity">
 </p>
 
+<div align="center">
+  <a href="https://discord.gg/FuhzUqfY"><kbd> <br> Discord <br> </kbd></a>&ensp;&ensp;
+  <a href="https://github.com/RAJ8664/Prep?tab=contributing-ov-file#readme"><kbd> <br> Contributing <br> </kbd></a>&ensp;&ensp;
+  <a href="https://github.com/raj8664/Prep/wiki"><kbd> <br> Wiki <br> </kbd></a>&ensp;&ensp;
+  <a href="https://github.com/raj8664/Prep/discussions"><kbd> <br> Discussions <br> </kbd></a>&ensp;&ensp;
+  <a href="https://raj8664.github.io/Prep"><kbd> <br> Website <br> </kbd></a>&ensp;&ensp;
+</div>
+
 <div align = "center">
 
 <img  src = "https://res.cloudinary.com/dzgoq3ikq/image/upload/v1763727602/ele-copy-removebg-preview_yuhev5.png"/>
