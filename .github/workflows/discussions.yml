@@ -1,0 +1,20 @@
+name: Discussions → Discord
+
+on:
+    discussion:
+        types: [created]
+
+jobs:
+    notify:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: Ilshidur/action-discord@master
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_DISCUSSIONS_WEBHOOK }}
+              with:
+                  args: |
+                      💬 **New Discussion Created**
+                      **Title:** ${{ github.event.discussion.title }}
+                      **Category:** ${{ github.event.discussion.category.name }}
+                      👤 ${{ github.event.discussion.user.login }}
+                      🔗 ${{ github.event.discussion.html_url }}
