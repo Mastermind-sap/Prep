@@ -9,7 +9,7 @@
 </p>
 
 <div align="center">
-  <a href="https://discord.gg/FuhzUqfY"><kbd> <br> Discord <br> </kbd></a>&ensp;&ensp;
+  <a href="https://discord.gg/J4yGSqW9Pb"><kbd> <br> Discord <br> </kbd></a>&ensp;&ensp;
   <a href="https://github.com/RAJ8664/Prep?tab=contributing-ov-file#readme"><kbd> <br> Contributing <br> </kbd></a>&ensp;&ensp;
   <a href="https://github.com/raj8664/Prep/wiki"><kbd> <br> Wiki <br> </kbd></a>&ensp;&ensp;
   <a href="https://github.com/raj8664/Prep/discussions"><kbd> <br> Discussions <br> </kbd></a>&ensp;&ensp;
