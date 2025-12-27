@@ -56,6 +56,11 @@ features:
       details: Where payments power possibilities, building reliable, scalable APIs that make money move smoothly and securely around the world.
       link: ./Stripe
 
+    - icon: '<img src="./Logos/atlassian.jpg" width="36" style="vertical-align:middle;">'
+      title: Atlassian
+      details: Powering teamwork with tools like Jira and Confluence, helping teams plan, track, and ship software efficiently.
+      link: ./Atlassian
+
 ---
 
 ## Contributing
