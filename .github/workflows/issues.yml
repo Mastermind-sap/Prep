@@ -1,0 +1,19 @@
+name: Issues → Discord
+
+on:
+    issues:
+        types: [opened]
+
+jobs:
+    notify:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: Ilshidur/action-discord@master
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_ISSUES_WEBHOOK }}
+              with:
+                  args: |
+                      🐞 **New Issue Opened**
+                      **Title:** ${{ github.event.issue.title }}
+                      👤 ${{ github.event.issue.user.login }}
+                      🔗 ${{ github.event.issue.html_url }}

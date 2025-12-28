@@ -30,7 +30,17 @@
   { name: 'Induction Motors', fileId: '1CrRFRI0wsWJz_Q-zrCkh92vmAPyB1U6F' },
   { name: 'DC Generator', fileId: '1rmfhC5Y1jE8yOqgjKDO7cVC5xpe0xIP8' },
   { name: 'EMF Equations', fileId: '1kgTa6jRI9GFN7HLgFRMKq5M2OrXb7Qlt' },
-  { name: 'Electrical Machines', fileId: '1T9zvfYf03myjnlibPe7AS0diPRjnbKzG' }
+  { name: 'Electrical Machines', fileId: '1T9zvfYf03myjnlibPe7AS0diPRjnbKzG' },
+  { name: 'DC_Circuit-DKR', fileId: '1mU0EAge7_4L5KPDB3THY0a0wPQ8Iy3YK'},
+  { name: 'AC Fundamentals by  Ravish R. Singh 289-348', fileId: '1IErJQMZObzc2ia0ZfD3HvZZlHAUMbJu2'},
+  { name: 'Analysis of DC Circuits-Basic Electrical Engineering by Ravish R. Singh', fileId: '1IAPWFXFXDI3CXKnIOKjDF_WwQsXcYUVa'},
+  { name: 'Assignment-1 - Section J', fileId: '109cxXGDzbUnR3w0-ZIvmyHlnv_y3Zs50'},
+  { name: 'Basic Network Concepts', fileId: '1k878da_Y1CbURTEAm_hLxskqCMXc6shS'},
+  { name: 'BEE_Lab_Manual-modified-DKR (2) (1)', fileId: '1kDPrWrJpd815-3rtvju2izt5tCrls-YR'},
+  { name: 'Course File  EE101- DKR_with co-po mapping (1)', fileId: '1kAF1YlgDY7LwFRLD141JWeu42CR3BXx3'},
+  { name: 'Modified BEE lab manual NITS', fileId: '1FZ_4lC3W9-YvXkone5DKRqkHE8qfkfx0'},
+  { name: 'Modified BEE lab manual NITS', fileId: '1m4gRRXpCFCRUItJXz2RABWfJjwxGeiDc'},
+  { name: 'Three-Phase Circuits by Ravish R. Singh-BEE', fileId: '161nYOoLMq4iEDHhtbEadjA6Q4f5UKrbD'}
 ]" />
 
 </div>

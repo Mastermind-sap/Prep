@@ -1,4 +1,4 @@
-# Inside stories. Real experiences. MathWorks interviews, unfiltered.
+# Inside stories. Real experiences. Stripe interviews, unfiltered.
 
 ## 📚 Summer/ Winter Internship
 
@@ -6,7 +6,7 @@
 
 | # | Role                             |                                            View                                            |
 |:-:|:-------------------------------------|:--------------------------------------------------------------------------------------------:|
-| 1 | **Associate in EDG(Engineering Development Group) 2025**                | [📥 Open](./MathWork_Exp1) |
+| 1 | **Software Engineering Intern, 6 months**                | [📥 Open](./Stripe_Exp1) |
 
 
 </div>

@@ -480,6 +480,7 @@ Leetcode Solutions
 | [3714-maximum-and-minimum-sums-of-at-most-size-k-subsequences](./3714-maximum-and-minimum-sums-of-at-most-size-k-subsequences)           |
 | [3754-maximum-manhattan-distance-after-k-changes](./3754-maximum-manhattan-distance-after-k-changes)                                     |
 | [3817-maximum-containers-on-a-ship](./3817-maximum-containers-on-a-ship)                                                                 |
+| [4175-smallest-all-ones-multiple](./4175-smallest-all-ones-multiple)                                                                     |
 
 ## 🔤 String
 

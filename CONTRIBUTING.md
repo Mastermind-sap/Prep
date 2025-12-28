@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🤝 Contributing to Prep
+# 🤝 Contributing to ElevateU
 
 ### _"Open source is powered by people like **you** — every contribution counts!"_ ✨
 
@@ -91,17 +91,17 @@ Before making changes, ensure you can run the project locally:
 
 1. **Install Dependencies:**
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 2. **Run Development Server:**
 
-   ```bash
-   npm run docs:dev
-   ```
+    ```bash
+    npm run docs:dev
+    ```
 
-   This will start a local server (usually at `http://localhost:5173`) where you can preview your changes in real-time.
+    This will start a local server (usually at `http://localhost:5173`) where you can preview your changes in real-time.
 
 ### Step 5️⃣ : Make Your Changes
 
