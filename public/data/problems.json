@@ -14983,6 +14983,10 @@
     "slug": "find-golden-hour-customers",
     "difficulty": "medium"
   },
+  "4095": {
+    "slug": "number-of-balanced-integers-in-a-range",
+    "difficulty": "hard"
+  },
   "4098": {
     "slug": "longest-non-decreasing-subarray-after-replacing-at-most-one-element",
     "difficulty": "medium"
@@ -15095,6 +15099,10 @@
     "slug": "total-score-of-dungeon-runs",
     "difficulty": "medium"
   },
+  "4147": {
+    "slug": "minimum-cost-to-acquire-required-items",
+    "difficulty": "medium"
+  },
   "4148": {
     "slug": "convert-number-words-to-digits",
     "difficulty": "medium"
@@ -15146,5 +15154,13 @@
   "4169": {
     "slug": "most-common-course-pairs",
     "difficulty": "hard"
+  },
+  "4173": {
+    "slug": "maximum-score-of-a-split",
+    "difficulty": "medium"
+  },
+  "4175": {
+    "slug": "smallest-all-ones-multiple",
+    "difficulty": "medium"
   }
 }
