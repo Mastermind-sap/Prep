@@ -66,6 +66,11 @@ features:
       details: Connecting the world through secure networks, smart infrastructure, and technology that keeps businesses running smoothly.
       link: ./Cisco
 
+    - icon: '<img src="./Logos/tech_mahindra.png" width="36" style="vertical-align:middle;">'
+      title: Tech Mahindra
+      details: Transforming businesses through digital innovation, engineering excellence, and smart technology solutions.
+      link: ./Tech_Mahindra
+
 ---
 
 ## Contributing
