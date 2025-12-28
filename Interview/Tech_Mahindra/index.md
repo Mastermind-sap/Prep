@@ -6,8 +6,9 @@
 
 | # | Role                             |                                            View                                            |
 |:-:|:---------------------------------|:--------------------------------------------------------------------------------------------:|
-| 1 | **Technorise Intern 2026**                     | [📥 Open](./Tm_Exp1) |
+| 1 | **Technorise Intern 2026**      | [📥 Open](./Tm_Exp1) |
 | 2 | **Technorise Intern 2026**      | [📥 Open](./Tm_Exp2) |
+| 2 | **Technorise Intern 2026**      | [📥 Open](./Tm_Exp3) |
 
 </div>
 

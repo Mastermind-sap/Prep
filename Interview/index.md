@@ -70,6 +70,12 @@ features:
       title: Tech Mahindra
       details: Transforming businesses through digital innovation, engineering excellence, and smart technology solutions.
       link: ./Tech_Mahindra
+
+    - icon: '<img src="./Logos/publicis_sapient.png" width="36" style="vertical-align:middle;">'
+      title: Publicis Sapient
+      details: Solving billion-dollar problems with clean code, sharp strategy, and a serious obsession for good design.
+      link: ./Publicis_Sapient
+
 ---
 
 ## Contributing
