@@ -136,5 +136,16 @@
     { "label": "monkeytype", "url": "https://monkeytype.com/profile/krisshhh" }
   ]'
 />
+<ElectricCard
+  badge="CONTRIBUTOR"
+  image="https://res.cloudinary.com/dp8t6eba3/image/upload/v1766916805/pp_r8xdmz.jpg"
+  title="Jay Aditya"
+  description="Product-Driven Software Engineer"
+  :links='[
+    { "label": "GitHub", "url": "https://github.com/JayadityaGit" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/opensourceaditya/" }
+  ]'
+/>
+
 
 </div>
