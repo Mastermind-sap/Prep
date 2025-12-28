@@ -61,6 +61,11 @@ features:
       details: Powering teamwork with tools like Jira and Confluence, helping teams plan, track, and ship software efficiently.
       link: ./Atlassian
 
+    - icon: '<img src="./Logos/cisco.png" width="36" style="vertical-align:middle;">'
+      title: Cisco
+      details: Connecting the world through secure networks, smart infrastructure, and technology that keeps businesses running smoothly.
+      link: ./Cisco
+
 ---
 
 ## Contributing

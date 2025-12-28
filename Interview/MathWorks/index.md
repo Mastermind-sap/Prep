@@ -1,4 +1,4 @@
-# Inside stories. Real experiences. Google interviews, unfiltered.
+# Inside stories. Real experiences. MathWorks interviews, unfiltered.
 
 ## 📚 Summer/ Winter Internship
 
