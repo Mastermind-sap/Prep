@@ -1,4 +1,4 @@
-# Inside stories. Real experiences. Microsoft interviews, unfiltered.
+# Inside stories. Real experiences. Optum interviews, unfiltered.
 
 ## 📚 TDP (FTE)
 
